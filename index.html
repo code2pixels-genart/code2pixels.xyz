@@ -19,55 +19,6 @@
 		<link rel="stylesheet" href="dist/theme/night.css" id="theme">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<style type="text/css">
-
-			/* Mobile */
-			@media (max-width: 767px) {
-				:root {
-				  --r-background-color: #111;
-				  --r-main-font: Open Sans, sans-serif;
-				  --r-main-font-size: 40px;
-				  --r-main-color: #eee;
-				  --r-block-margin: 20px;
-				  --r-heading-margin: 0 0 20px 0;
-				  --r-heading-font: Montserrat, Impact, sans-serif;
-				  --r-heading-color: #eee;
-				  --r-heading-line-height: 1.2;
-				  --r-heading-letter-spacing: -0.03em;
-				  --r-heading-text-transform: none;
-				  --r-heading-text-shadow: none;
-				  --r-heading-font-weight: normal;
-				  --r-heading1-text-shadow: none;
-				  --r-heading1-size: 4.77em;
-				  --r-heading2-size: 3.11em;
-				  --r-heading3-size: 1.55em;
-				  --r-heading4-size: 1.25em;
-				  --r-code-font: monospace;
-				  --r-link-color: #e7ad52;
-				  --r-link-color-dark: #d08a1d;
-				  --r-link-color-hover: #f3d7ac;
-				  --r-selection-background-color: #e7ad52;
-				  --r-selection-color: #fff;
-				}
-
-				.reveal small{
-					font-size: 0.9em;
-				}
-				.reveal p{
-					font-size: 1.3em;
-				}
-
-				#loadingMessage {
-				    width: 100%;
-				    height: 100%;
-				    z-index: 1000;
-				    background: rgba(0, 0, 0, 0.2);
-				    top: 0px;
-				    left: 0px;
-				    position: absolute;
-				}
-
-			}
-
 			/* Icon */
 
 				.icon {
@@ -128,16 +79,54 @@
 						ul.icons li:last-child {
 							padding-right: 0;
 						}
+
+			/* Mobile */
+			@media (max-width: 767px) {
+				:root {
+				  --r-background-color: #111;
+				  --r-main-font: Open Sans, sans-serif;
+				  --r-main-font-size: 40px;
+				  --r-main-color: #eee;
+				  --r-block-margin: 20px;
+				  --r-heading-margin: 0 0 20px 0;
+				  --r-heading-font: Montserrat, Impact, sans-serif;
+				  --r-heading-color: #eee;
+				  --r-heading-line-height: 1.2;
+				  --r-heading-letter-spacing: -0.03em;
+				  --r-heading-text-transform: none;
+				  --r-heading-text-shadow: none;
+				  --r-heading-font-weight: normal;
+				  --r-heading1-text-shadow: none;
+				  --r-heading1-size: 4.77em;
+				  --r-heading2-size: 3.11em;
+				  --r-heading3-size: 1.55em;
+				  --r-heading4-size: 1.25em;
+				  --r-code-font: monospace;
+				  --r-link-color: #e7ad52;
+				  --r-link-color-dark: #d08a1d;
+				  --r-link-color-hover: #f3d7ac;
+				  --r-selection-background-color: #e7ad52;
+				  --r-selection-color: #fff;
+				}
+
+				.reveal small{
+					font-size: 0.9em;
+				}
+				.reveal p{
+					font-size: 1.3em;
+				}
+
+				ul.icons li a:before {
+					font-size: 2.4em;
+					margin: 10px;
+				}
+
+				ul.icons li a{
+					 color: var(--r-link-color);
+				}
+			}
 		</style>
 
-		<script type="text/javascript">
-			$('#interactiveBg').ready(function () {
-			    $('#loadingMessage').css('display', 'none');
-			});
-			$('#interactiveBg').load(function () {
-			    $('#loadingMessage').css('display', 'none');
-			});
-		</script>
 
 		<!-- Theme used for syntax highlighting of code -->
 		<!-- <link rel="stylesheet" href="plugin/highlight/night.css"> -->
@@ -263,15 +252,16 @@
 				<section  data-background="medias/c2p-bg-01.png"  data-background-opacity=0.1>
 					<h1>:)</h1>
 					<p><small>Feel free to reachout via social media or email, would love to chat!</small><br>
-						<small style="font-size:0.5em; color:#666666">Back to <a href="#/0">first slide</a>.</small></p>
-					<p><ul class="icons">
+						<br><small style="font-size:0.5em; color:#666666">Back to <a href="#/0">first slide</a>.</small></p>
+					<ul class="icons">
 						<li><a href="https://twitter.com/code2pixels_" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="https://www.instagram.com/code2pixels/" target="_blank" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 						<li><a href="https://github.com/code2pixels-genart" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
 						<li><a href="mailto:code2pixels@pm.me?Subject=Hi!" target="_blank" class="icon fa-envelope"><span class="label">Email</span></a></li>
-					</ul></p>
-					 <p><small style="color:#666666">Open for commission art, drop me an <a href="mailto:code2pixels@pm.me?Subject=Hi!" target="_blank">email</a> or DM me on <a href="https://twitter.com/code2pixels_" target="_blank">Twitter</a>.</small>
-					<br><small style="font-size:0.3em; color:#666666">Made with <a href="https://revealjs.com/" target="_blank">reveal.js</a> with <3</small></p>
+					</ul>
+					<br><br>
+					 <p><small style="color:#666666">Open for commission art, get in touch!</small>
+					<br><br><small style="font-size:0.3em; color:#666666">Made with <a href="https://revealjs.com/" target="_blank">reveal.js</a> with <3</small></p>
 				</section>
 			</div>
 
