@@ -22,7 +22,7 @@ title: code2pixels blog
 email: code2pixels@proton.me
 description: >- # this means to ignore newlines until "baseurl:"
   code2pixels rambling about new and old projects, thoughts on generative art and other creative coding explorations.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/c2p-blog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: code2pixels_
 github_username:  code2pixels-genart
