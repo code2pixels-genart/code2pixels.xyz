@@ -1,0 +1,5 @@
+# sample file: https://docs.netlify.com/configure-builds/file-based-configuration/#sample-netlify-toml-file
+
+[context.production]
+  publish = "_site/"
+  command = "bundle exec jekyll serve"
