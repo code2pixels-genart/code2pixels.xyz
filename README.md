@@ -1,1 +1,1 @@
-# code2pixels-genart.github.io
+# code2pixels.xyz
