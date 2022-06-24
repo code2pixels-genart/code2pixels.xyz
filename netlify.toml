@@ -4,4 +4,4 @@
 
 [context.blog]
   publish = "_site/"
-  command = "bundle exec jekyll serve"
+  command = "jekyll build"
