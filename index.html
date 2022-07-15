@@ -120,7 +120,7 @@
 				}
 
 				.reveal small{
-					font-size: 0.9em;
+					font-size: 0.6em;
 				}
 				.reveal p{
 					font-size: 1.3em;
@@ -134,6 +134,11 @@
 				ul.icons li a{
 					 color: var(--r-link-color);
 				}
+				/* Slide-specific vertical centering override */
+				.reveal .slides section[data-vertical-align-top]{
+					top: -100px !important;
+				}
+
 			}
 		</style>
 
@@ -156,7 +161,7 @@
 				</section>
 
 				<!-- TAU -->
-				<section data-background="medias/tau-logo.png"  data-background-opacity=0.025 data-background-size="500px" data-background-repeat="repeat" data-background-position="left">
+				<section data-vertical-align-top data-background="medias/tau-logo.png"  data-background-opacity=0.025 data-background-size="500px" data-background-repeat="repeat" data-background-position="left" >
 					<h2>TAU</h2>
 					<p><small>O <a href="https://territorioarteurbana.com.br/" target="_blank">TAU – Arte na Rua</a> é um festival de arte em espaço público que está em sua terceira edição. Em 2022, o TAU tem em seu horizonte trabalhos que se relacionam com a cidade, os espaços de intervenção e a comunidade do entorno.
 					<br><br>
