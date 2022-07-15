@@ -90,8 +90,60 @@
 							padding-right: 0;
 						}
 
+
 			/* Mobile */
 			@media (max-width: 767px) {
+				:root {
+				  --r-background-color: #111;
+				  --r-main-font: Open Sans, sans-serif;
+				  --r-main-font-size: 40px;
+				  --r-main-color: #eee;
+				  --r-block-margin: 20px;
+				  --r-heading-margin: 0 0 20px 0;
+				  --r-heading-font: Montserrat, Impact, sans-serif;
+				  --r-heading-color: #eee;
+				  --r-heading-line-height: 1.2;
+				  --r-heading-letter-spacing: -0.03em;
+				  --r-heading-text-transform: none;
+				  --r-heading-text-shadow: none;
+				  --r-heading-font-weight: normal;
+				  --r-heading1-text-shadow: none;
+				  --r-heading1-size: 4.77em;
+				  --r-heading2-size: 3.11em;
+				  --r-heading3-size: 1.55em;
+				  --r-heading4-size: 1.25em;
+				  --r-code-font: monospace;
+				  --r-link-color: #e7ad52;
+				  --r-link-color-dark: #d08a1d;
+				  --r-link-color-hover: #f3d7ac;
+				  --r-selection-background-color: #e7ad52;
+				  --r-selection-color: #fff;
+				}
+
+				.reveal small{
+					font-size: 0.6em;
+				}
+				.reveal p{
+					font-size: 1.3em;
+				}
+
+				ul.icons li a:before {
+					font-size: 2.4em;
+					margin: 10px;
+				}
+
+				ul.icons li a{
+					 color: var(--r-link-color);
+				}
+				/* Slide-specific vertical centering override */
+				.reveal .slides section[data-vertical-align-top]{
+					top: -120px !important;
+				}
+
+			}
+
+			/* Mobile */
+			@media (max-width: 600px) {
 				:root {
 				  --r-background-color: #111;
 				  --r-main-font: Open Sans, sans-serif;
@@ -140,6 +192,7 @@
 				}
 
 			}
+
 		</style>
 
 
