@@ -21,23 +21,23 @@ The work aims to provoke reflection on the richness of these human connections, 
 
 Crossing Paths was created inspired by La Longue Marche (1974), a series of acrylic paintings made by Julio Le Parc.
 
-### Image galleries
+### Featured artworks
 
-<div class="gallery" data-columns="2">
-	<img src="/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png" alt="TESTE">
-	<img src="/images/crossing-paths/31-oo3oCwmQXp8fYzweP7zBxfvfxKjaZjPsz1SfG3dDPC1FyTvZpba_1_1.png" alt="TESTE">
-	<img src="/images/crossing-paths/07-oohn84GTBeE2M7hUJMU1ooUY3ShWunB7y3dUtz4BS5XLdstXDZE_1_1.png" alt="TESTE">
-	<img src="/images/crossing-paths/04-oozmaEKBkyrbY4K5KBNj3Lfb8K7mtxunLqn4woAyL4smWvDF2eY_1_1.png" alt="TESTE">
+<div class="gallery" data-columns="3">
+	<img src="/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png" title="Crossing Paths #01">
+	<img src="/images/crossing-paths/31-oo3oCwmQXp8fYzweP7zBxfvfxKjaZjPsz1SfG3dDPC1FyTvZpba_1_1.png" title="Crossing Paths #31">
+	<img src="/images/crossing-paths/07-oohn84GTBeE2M7hUJMU1ooUY3ShWunB7y3dUtz4BS5XLdstXDZE_1_1.png" title="Crossing Paths #07">
+	<img src="/images/crossing-paths/04-oozmaEKBkyrbY4K5KBNj3Lfb8K7mtxunLqn4woAyL4smWvDF2eY_1_1.png" title="Crossing Paths #04">
+	<img src="/images/crossing-paths/07-oohn84GTBeE2M7hUJMU1ooUY3ShWunB7y3dUtz4BS5XLdstXDZE_1_1.png" title="Crossing Paths #07">
+	<img src="/images/crossing-paths/04-oozmaEKBkyrbY4K5KBNj3Lfb8K7mtxunLqn4woAyL4smWvDF2eY_1_1.png" title="Crossing Paths #04">
 </div>
+
 
 ---
 
 ### Full Collection on fx(hash)
 
-<div class="gallery" data-columns="1">
-		<img src="/images/crossing-paths/CrossingPaths-FullCollection.png">
-</div>
-
+<img src="/images/crossing-paths/CrossingPaths-FullCollection.png">
 
 
 <a href="https://www.fxhash.xyz/generative/13531" class="button button--large" target="_blank">See in fx(hash)</a>

@@ -501,3 +501,23 @@ a.socials__item__link:hover{
 	-webkit-background-clip: text;
 	color: transparent;
 }
+
+/* MY CAPTION */
+
+.caption {
+	@include transition(all 0.5s ease-out-in);
+	background: #000000cf;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    text-align: center;
+    line-height: normal;
+    visibility: hidden;
+    font-size: x-large;
+}
+
+.visible {
+	@include transition(all 0.5s ease-out-in);
+	visibility: visible;
+}

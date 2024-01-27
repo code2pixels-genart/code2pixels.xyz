@@ -48,6 +48,11 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.1.1/js/brands.js" integrity="sha384-0inRy4HkP0hJ038ZyfQ4vLl+F4POKbqnaUB6ewmU4dWP0ki8Q27A0VFiVRIpscvL" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.1.1/js/fontawesome.js" integrity="sha384-NY6PHjYLP2f+gL3uaVfqUZImmw71ArL9+Roi9o+I4+RBqArA2CfW1sJ1wkABFfPe" crossorigin="anonymous"></script>
 
+	<!-- Poppins -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wdth,wght,GRAD,YOPQ,YTDE,YTLC@8..144,114.1,433,150,135,-216,488&display=swap" rel="stylesheet">
+
 	{% if site.data.settings.advanced_settings.custom_styles %}
 	<!-- Custom Styles -->
 	<style>{{ site.data.settings.advanced_settings.custom_styles }}</style>
@@ -87,6 +92,9 @@
 
 	</div>
 
+	<div id="caption" class="caption">
+		Caption
+	</div>
 
 	{% include footer.html %}
 
@@ -94,7 +102,7 @@
 	<!-- Javascript Assets -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="{{ '/js/plugins-min.js' | relative_url }}"></script>
-	<script src="{{ '/js/board-min.js' | relative_url }}"></script>
+	<script src="{{ '/js/board.js' | relative_url }}"></script>
 
 	{% if site.data.settings.advanced_settings.footer_js %}
 	<!-- Extra Footer JS Code -->
