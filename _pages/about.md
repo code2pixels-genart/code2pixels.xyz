@@ -5,7 +5,7 @@ description: Board is a stylish full-width masonry grid theme.
 featured_image: /images/demo/landscape-05.jpg
 ---
 
-![](/images/about/c2p_about.jpg)
+![](/images/about/code2pixels_tumblr.jpg)
 
 ## About
 
