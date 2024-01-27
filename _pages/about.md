@@ -1,7 +1,7 @@
 ---
 title: About code2pixels
 subtitle: Generative artist
-description: Board is a stylish full-width masonry grid theme.
+description: code2pixels is a generative artist.
 featured_image: /images/demo/landscape-05.jpg
 ---
 
