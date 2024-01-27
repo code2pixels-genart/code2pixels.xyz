@@ -4,6 +4,7 @@ subtitle: 'Generative Collection'
 date: 2018-06-30 00:00:00
 description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
 featured_image: '/images/when-lives-mingle/18_WhenLivesMingle_by_code2pixels_0x69c170f4cafb2e98d04baccd331d698a84f817568421a32a5a2eef21169f4c25.png'
+thumb_image: "/images/home/when-lives-mingle-thumb.jpg"
 ---
 
 ![]({{ page.featured_image }})

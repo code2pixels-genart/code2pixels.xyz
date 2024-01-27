@@ -4,6 +4,8 @@ subtitle: 'An ode to the unpredictability of the paths we take in life.'
 date: 2018-06-30 00:00:00
 description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
 featured_image: "/images/uncertain-path/16-oo9Sbtwej9quH8Q3wx6WE2myXetHc6Yk113NenABdjyQ1VWJLEh_1_1.png"
+thumb_image: "/images/home/uncertain-path-thumb.jpg"
+
 ---
 
 ![]({{ page.featured_image }})

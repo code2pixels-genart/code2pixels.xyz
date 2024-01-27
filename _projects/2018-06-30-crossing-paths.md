@@ -1,6 +1,6 @@
 ---
 title: 'Crossing Paths'
-subtitle: 'Generative Collection in fx(hash)'
+subtitle: 'An ode to the crossing paths in life'
 categories:
   Generative
   NFT
@@ -9,6 +9,7 @@ categories:
 date: 2018-06-30 00:00:00
 description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
 featured_image: "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
+thumb_image: "/images/home/crossing-paths-thumb.jpg"
 ---
 
 ![]({{ page.featured_image }})
