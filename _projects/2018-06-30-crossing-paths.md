@@ -6,8 +6,8 @@ categories:
   NFT
   Tezos
   fx(hash)
-date: 2018-06-30 00:00:00
-description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
+date: 2022-05-24 17:17:00
+description: Launched in 2022, the Crossing Paths series of generative art celebrates the paths and crossroads in life.
 featured_image: "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
 thumb_image: "/images/home/crossing-paths-thumb.jpg"
 ---
@@ -21,8 +21,6 @@ Launched in 2022, the Crossing Paths series of generative art celebrates the pat
 The work aims to provoke reflection on the richness of these human connections, capturing ephemeral moments that linger. Each stroke represents a unique path, and each path intersects, or not, with another, inviting observers to contemplate the beauty and time of these encounters and disconnections.
 
 Crossing Paths was created inspired by La Longue Marche (1974), a series of acrylic paintings made by Julio Le Parc.
-
-### Featured artworks
 
 <div class="gallery" data-columns="3">
 	<img src="/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png" title="Crossing Paths #01">
@@ -41,4 +39,4 @@ Crossing Paths was created inspired by La Longue Marche (1974), a series of acry
 <img src="/images/crossing-paths/CrossingPaths-FullCollection.png">
 
 
-<a href="https://www.fxhash.xyz/generative/13531" class="button button--large" target="_blank">See in fx(hash)</a>
+<a href="https://www.fxhash.xyz/generative/13531" class="button button--large" target="_blank">View in fx(hash)</a>

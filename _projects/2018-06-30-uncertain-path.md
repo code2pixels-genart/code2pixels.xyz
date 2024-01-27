@@ -1,8 +1,8 @@
 ---
 title: 'Uncertain Path'
-subtitle: 'An ode to the unpredictability of the paths we take in life.'
-date: 2018-06-30 00:00:00
-description: Board is a stylish full-width masonry grid theme. Made for designers, artists, photographers and developers to show off their best work.
+subtitle: 'An ode to the unpredictability of the paths we take in life'
+date: 2022-05-11 15:00:00
+description: Uncertain Path is a generative series launched on the fx(hash) platform in 2022. 
 featured_image: "/images/uncertain-path/16-oo9Sbtwej9quH8Q3wx6WE2myXetHc6Yk113NenABdjyQ1VWJLEh_1_1.png"
 thumb_image: "/images/home/uncertain-path-thumb.jpg"
 
@@ -11,8 +11,6 @@ thumb_image: "/images/home/uncertain-path-thumb.jpg"
 ![]({{ page.featured_image }})
 
 ## {{ page.title }}
-
-
 
 "Uncertain Path" is a generative series launched on the fx(hash) platform in 2022. 
 
@@ -23,10 +21,6 @@ The collection is an ode to the unpredictability of the paths we traverse in lif
 "Uncertain Path" was created inspired by "La Longue Marche" (1974), a series of acrylic paintings by Argentine artist Julio Le Parc.
 
 ---
-
-### Image galleries
-
-Here's a really neat custom feature we added – galleries:
 
 <div class="gallery" data-columns="3">
 	<img src="/images/uncertain-path/19-ooDweR8NFV7HVS9ARqVjH46cTV2u3DNSm1NdnrDK3yGYwDHkUpW_1_1.png">
@@ -39,28 +33,9 @@ Here's a really neat custom feature we added – galleries:
 
 ---
 
-### Image carousels
+### Full Collection on fx(hash)
 
-Here's another gallery with only one column, which creates a carousel slide-show instead.
+<img src="/images/uncertain-path/fxhash-c2p-uncertain-path.png">
 
-A nice little feature: the carousel only advances when it is in view, so your visitors won't scroll down to find it half way through your images.
 
-<div class="gallery" data-columns="1">
-	<img src="/images/uncertain-path/fxhash-c2p-uncertain-path.png">
-</div>
-
-### What about videos?
-
-Videos are an awesome way to show off your work in a more engaging and personal way, and we’ve made sure they work great on our themes. Just paste an embed code from YouTube or Vimeo, and the theme makes sure it displays perfectly:
-
-<iframe src="https://player.vimeo.com/video/107469489" width="640" height="360" frameborder="0" allowfullscreen></iframe>
-
----
-
-## Pretty cool, huh?
-
-We've packed this theme with powerful features to show off your work.
-
-Why not put them to use on your new portfolio?
-
-<a href="https://jekyllthemes.io/theme/board-portfolio-jekyll-theme" class="button button--large">Get This Theme</a>
+<a href="https://www.fxhash.xyz/generative/12787" class="button button--large" target="_blank">View in fx(hash)</a>
