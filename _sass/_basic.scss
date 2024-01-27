@@ -521,3 +521,21 @@ a.socials__item__link:hover{
 	@include transition(all 0.5s ease-out-in);
 	visibility: visible;
 }
+
+/* MY IFRAME */
+
+.frame {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+iframe {
+    width: 50%;
+    height: 100%;
+    border: 0;
+}
