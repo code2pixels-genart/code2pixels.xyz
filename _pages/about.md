@@ -1,7 +1,7 @@
 ---
 title: About code2pixels
-subtitle: Generative artist
-description: code2pixels is a generative artist.
+subtitle: Generative art
+description: code2pixels is a generative artist who creates generative, interactive, and abstract art through algorithms
 featured_image: /images/demo/landscape-05.jpg
 ---
 
@@ -10,7 +10,7 @@ featured_image: /images/demo/landscape-05.jpg
 ## About
 
 
-code2pixels is a generative artist who creates generative, interactive, and abstract art through algorithms, conceptually exploring human connections, inner landscapes, and life's narratives. Some artworks invite engagement, while others prompt contemplation, revealing latent meanings.
+code2pixels is a generative artist who creates **generative, interactive, and abstract art** through algorithms, conceptually exploring human connections, inner landscapes, and life's narratives. Some artworks invite engagement, while others prompt contemplation, revealing latent meanings.
 
 His visual work aims to stimulate reflection on human relationships in various dimensions, establishing a dialogue between the audience and computational systems through the use of real-time technologies. Through code writing, he seeks to represent and promote more present and conscious human relationships, challenging the prevalence of algorithms in our society. His poetic research aims to take control of the code to create abstract representations of human life, whether reflecting on the self or the multiple relationships we experience throughout life.
 
@@ -20,5 +20,3 @@ He has participated in various national and international festivals, showcasing 
 
 ## Artist Statement
 
-
-<a href="https://jekyllthemes.io/theme/board-portfolio-jekyll-theme" class="button button--large">Get This Theme</a>
