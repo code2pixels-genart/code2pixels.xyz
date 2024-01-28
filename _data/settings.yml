@@ -18,7 +18,7 @@ menu_settings:
       url: '/contact'
 
 footer_settings:
-  footer_tagline: code2pixels - (generative | interactive | abstract) art
+  footer_tagline: (generative | interactive | abstract) art
 
 grid_settings:
   overlay_opacity: 0.8
