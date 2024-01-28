@@ -1,8 +1,8 @@
 ---
 title: 'Recursive Rects'
-subtitle: ''
+subtitle: 'Generative series launched on fx(hash) in 2022'
 date: 2022-04-20 19:07:00
-description: Recursive Rectsis a generative series launched on the fx(hash) platform in 2022. 
+description: Recursive Rects is a generative series launched on the fx(hash) platform in 2022. 
 featured_image: "/images/recursive-rects/recursive-rects-09.png"
 thumb_image: "/images/home/recursive-rects-thumb.jpg"
 
