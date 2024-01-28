@@ -8,12 +8,8 @@ thumb_image: "/images/home/hicetnunc-thumb.jpg"
 
 ---
 
-![]({{ page.featured_image }})
-
 
 Interactive NFTs created in 2021 in the final months of hic et nunc.
-
----
 
 <div class="gallery" data-columns="4">
 	<img src="/images/hicetnunc/c2p12.jpg" title="c2p#12">
@@ -22,6 +18,8 @@ Interactive NFTs created in 2021 in the final months of hic et nunc.
 	<img src="/images/hicetnunc/code2pixels07.jpg" title="code2pixels#07">
 
 </div>
+
+---
 
 The frames below are interactive, feel free to explore:
 
