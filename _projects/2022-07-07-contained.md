@@ -1,11 +1,14 @@
 ---
 title: 'Contained'
-subtitle: 'Unique interactive sculptures representing our inner selves'
+subtitle: 'Interactive 3D sculptures representing the essence of the individual'
 date: 2022-07-07 15:00:00
 description: Interactive 3D sculpture that captures the essence of the individual
 featured_image: "/images/contained/Contained_Cover.jpg"
 thumb_image: "/images/home/contained-thumb.jpg"
 
+
+marketplace: Objkt
+marketplace_link: https://objkt.com/tokens/KT1SuXxx9V4mdmMmRUvFxVH5eiVj9BrUaRDu/1
 ---
 
 ![]({{ page.featured_image }})
@@ -22,7 +25,7 @@ Since the work is generative, each viewer will see a different piece. You need t
 
 ---
 
-How to interact with it?
+#### How to interact with it?
 - Click and drag to explore the virtual sculpture
 - Zoom in and out (scroll or pinch)
 - Press "a" to toggle shader animation
@@ -37,6 +40,3 @@ This work is GPU intensive. Although it may work on mobile, for best viewing exp
 <div class="frame">
 	<iframe src="https://assets.objkt.media/file/assets-003/QmPmScFFyveESsSedxj9Na13dfebpRSUjDPWsdD7TcKfUo/artifact/index.html" frameborder="0" allowfullscreen></iframe>
 </div>
-
-
-<a href="https://objkt.com/tokens/KT1SuXxx9V4mdmMmRUvFxVH5eiVj9BrUaRDu/1" class="button button--large" target="_blank">View in Objkt</a>

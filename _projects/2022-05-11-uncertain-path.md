@@ -6,6 +6,8 @@ description: Uncertain Path is a generative series launched on the fx(hash) plat
 featured_image: "/images/uncertain-path/16-oo9Sbtwej9quH8Q3wx6WE2myXetHc6Yk113NenABdjyQ1VWJLEh_1_1.png"
 thumb_image: "/images/home/uncertain-path-thumb.jpg"
 
+marketplace: fx(hash)
+marketplace_link: https://www.fxhash.xyz/generative/12787
 ---
 
 ![]({{ page.featured_image }})
@@ -37,5 +39,3 @@ The collection is an ode to the unpredictability of the paths we traverse in lif
 
 <img src="/images/uncertain-path/fxhash-c2p-uncertain-path.png">
 
-
-<a href="https://www.fxhash.xyz/generative/12787" class="button button--large" target="_blank">View in fx(hash)</a>

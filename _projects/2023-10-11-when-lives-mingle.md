@@ -5,6 +5,9 @@ date: 2023-10-11 13:00:00
 description: When Lives Mingle is a generative series launched on the Prohibition platform in 2023. 
 featured_image: '/images/when-lives-mingle/18_WhenLivesMingle_by_code2pixels_0x69c170f4cafb2e98d04baccd331d698a84f817568421a32a5a2eef21169f4c25.png'
 thumb_image: "/images/home/when-lives-mingle-thumb.jpg"
+
+marketplace: Prohibition
+marketplace_link: https://prohibition.art/project/when-lives-mingle
 ---
 
 <div class="gallery" data-columns="2">
@@ -27,12 +30,4 @@ The collection also explores the moments when subtle disruptions create fissures
 
 Each piece extends an invitation to contemplate the intricate fabric of human connections and the profound resonance that arises when personal narratives intersect.
 
-by @code2pixels October, 2023
-
-Made with p5.js
-
-
-
-<a href="https://prohibition.art/project/when-lives-mingle" class="button button--large" target="_blank">View in Prohibition</a>
-
-
+Made with <a href="https://p5js.org" target="_blank">p5.js</a>

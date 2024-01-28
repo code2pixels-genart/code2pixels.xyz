@@ -10,6 +10,9 @@ date: 2022-05-24 17:17:00
 description: Launched in 2022, the Crossing Paths series of generative art celebrates the paths and crossroads in life.
 featured_image: "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
 thumb_image: "/images/home/crossing-paths-thumb.jpg"
+
+marketplace: fx(hash)
+marketplace_link: https://www.fxhash.xyz/generative/13531
 ---
 
 ![]({{ page.featured_image }})
@@ -37,6 +40,3 @@ Crossing Paths was created inspired by La Longue Marche (1974), a series of acry
 ### Full Collection on fx(hash)
 
 <img src="/images/crossing-paths/CrossingPaths-FullCollection.png">
-
-
-<a href="https://www.fxhash.xyz/generative/13531" class="button button--large" target="_blank">View in fx(hash)</a>

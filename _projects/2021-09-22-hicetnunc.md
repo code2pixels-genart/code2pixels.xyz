@@ -1,15 +1,21 @@
 ---
-title: 'Interactive Sketches'
-subtitle: 'Minted on hic et nunc aka Teia.art'
+title: 'Interactive h=n series'
+subtitle: 'Collection of interactive sketches minted on Hic et Nunc in 2021'
 date: 2021-09-22 15:18:00
-description: Interactive NFTs created in 2021 in the final months of hic et nunc. 
+description: Interactive NFTs created in 2021 in the final months of Hic et Nunc. 
 featured_image: "/images/hicetnunc/code2pixels05.jpg"
 thumb_image: "/images/home/hicetnunc-thumb.jpg"
+
+
+marketplace: teia.art
+marketplace_link: https://www.teia.art/code2pixels
 
 ---
 
 
-Interactive NFTs created in 2021 in the final months of hic et nunc.
+Interactive NFTs created in 2021 in the final months of Hic et Nunc.
+
+From 22 Sept 2021 (<a href="https://www.teia.art/objkt/342884" target="_blank">code2pixels - #01</a>) to 22 Oct 2021 (<a href="https://www.teia.art/objkt/342884" target="_blank">c2p#12</a>).
 
 <div class="gallery" data-columns="4">
 	<img src="/images/hicetnunc/c2p12.jpg" title="c2p#12">
@@ -39,5 +45,3 @@ The frames below are interactive, feel free to explore:
 	<iframe src="https://cache.teia.rocks/ipfs/QmZPg64WNS27crEVBTv7aJncWhzfqryEUA9V6FQQXYYz7q/?creator=tz1YinhT4JT3ngF9pMYBySNVrWDYhLNEfsYE&viewer=tz1YinhT4JT3ngF9pMYBySNVrWDYhLNEfsYE&objkt=342884" frameborder="0" allowfullscreen></iframe>
 </div>
 </p>
-
-<a href="https://www.teia.art/code2pixels" class="button button--large" target="_blank">View in teia.art</a>
