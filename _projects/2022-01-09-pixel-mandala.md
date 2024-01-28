@@ -1,8 +1,8 @@
 ---
 title: 'Pixel Mandala'
-subtitle: 'Collection of pixelated mandalas on fx(hash)'
+subtitle: 'Collection of pixelated mandalas'
 date: 2022-01-09 08:37:00
-description: Collection of pixelated mandalas on fx(hash). 
+description: Collection of pixelated mandalas. 
 featured_image: "/images/pixel-mandala/83.png"
 thumb_image: "/images/home/pixel-mandala-thumb.png"
 
