@@ -76,6 +76,8 @@ links:
     url: 'https://8x8.teztok.com/user/tz1YinhT4JT3ngF9pMYBySNVrWDYhLNEfsYE'
   - title: "Teia"
     url: 'https://www.teia.art/code2pixels'
+  - title: "OpenSea"
+    url: 'https://opensea.io/code2pixels'
 
 light_color_settings:
   background_color: '#ffffff'
