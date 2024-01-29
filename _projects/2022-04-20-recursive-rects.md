@@ -9,6 +9,9 @@ thumb_image: "/images/home/recursive-rects-thumb.jpg"
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/11601
 
+blockchain_name: Tezos
+currency_symbol: ꜩ
+currency_code: XTZ
 ---
 
 ![]({{ page.featured_image }})

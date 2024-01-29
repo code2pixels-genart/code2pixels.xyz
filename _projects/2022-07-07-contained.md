@@ -6,9 +6,13 @@ description: Interactive 3D sculpture that captures the essence of the individua
 featured_image: "/images/contained/Contained_Cover.jpg"
 thumb_image: "/images/home/contained-thumb.jpg"
 
-
 marketplace: Objkt
 marketplace_link: https://objkt.com/tokens/KT1SuXxx9V4mdmMmRUvFxVH5eiVj9BrUaRDu/1
+
+blockchain_name: Tezos
+
+currency_symbol: ꜩ
+currency_code: XTZ
 ---
 
 ![]({{ page.featured_image }})

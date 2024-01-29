@@ -10,6 +10,9 @@ thumb_image: "/images/home/hicetnunc-thumb.jpg"
 marketplace: teia.art
 marketplace_link: https://www.teia.art/code2pixels
 
+blockchain_name: Tezos
+currency_symbol: ꜩ
+currency_code: XTZ
 ---
 
 

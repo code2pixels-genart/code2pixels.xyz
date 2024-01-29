@@ -8,11 +8,15 @@ layout: default
 
 		<h1>{{ page.title }}</h1>
 		<h3>{{ page.subtitle }}</h3>
+
+		{% if page.blockchain_name %}
+			<span style="float:right; cursor: crosshair;" class="button" title="{{ page.blockchain_name }} - {{ page.currency_code }}">{{ page.currency_symbol }}</span>
+		{% endif %}
+		
 		<h6>{{ page.date | date: "%b %Y"  }}</h6>
 
 
-{% if page.marketplace %}
-
+		{% if page.marketplace %}
 		<a style="float:right" href="{{ page.marketplace_link }}" class="button button--large" target="_blank">{{ page.marketplace }} 
 		<div class="icon bassline">
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -20,7 +24,7 @@ layout: default
 			v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
 		</div>
 		</a> 
-{% elsif page.external %}
+		{% elsif page.external %}
 
 		<a style="float:right" href="{{ page.external_link }}" class="button button--large" target="_blank">{{ page.external }} 
 		<div class="icon bassline">
@@ -29,10 +33,12 @@ layout: default
 			v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
 		</div>
 		</a> 
-{% endif %}
+		{% endif %}
 
 
-<hr>
+	<hr>
+
+
 	</div>
 
 </section>
@@ -41,24 +47,23 @@ layout: default
 
 	{{ page.content }}
 
-
-{% if page.marketplace %}
-
-	<a style="float:right" href="{{ page.marketplace_link }}" class="button button--large" target="_blank">View in {{ page.marketplace }}
-		<div class="icon bassline">
-			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-			 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path d="M288,0v32v32h114.7L201.4,265.4l0,0l45.3,45.3L448,109.3V224h32h32V32V0H288L288,0z M80,32H0v480h80h400v-80V288h-32h-32
-			v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
-		</div></a>
-
-{% elsif page.external %}
-	<a style="float:right" href="{{ page.external_link }}" class="button button--large" target="_blank">View {{ page.external }}
-		<div class="icon bassline">
-			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-			 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path d="M288,0v32v32h114.7L201.4,265.4l0,0l45.3,45.3L448,109.3V224h32h32V32V0H288L288,0z M80,32H0v480h80h400v-80V288h-32h-32
-			v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
-		</div></a>
-{% endif %}
+	{% if page.marketplace %}
+		<a style="float:right" href="{{ page.marketplace_link }}" class="button button--large" target="_blank">View in {{ page.marketplace }}
+			<div class="icon bassline">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path d="M288,0v32v32h114.7L201.4,265.4l0,0l45.3,45.3L448,109.3V224h32h32V32V0H288L288,0z M80,32H0v480h80h400v-80V288h-32h-32
+				v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
+			</div>
+		</a>
+	{% elsif page.external %}
+		<a style="float:right" href="{{ page.external_link }}" class="button button--large" target="_blank">View {{ page.external }}
+			<div class="icon bassline">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> <path d="M288,0v32v32h114.7L201.4,265.4l0,0l45.3,45.3L448,109.3V224h32h32V32V0H288L288,0z M80,32H0v480h80h400v-80V288h-32h-32
+				v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
+			</div>
+		</a>
+	{% endif %}
 
 
 </section>

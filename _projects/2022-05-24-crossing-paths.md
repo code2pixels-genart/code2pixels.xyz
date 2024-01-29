@@ -13,6 +13,10 @@ thumb_image: "/images/home/crossing-paths-thumb.jpg"
 
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/13531
+
+blockchain_name: Tezos
+currency_symbol: ꜩ
+currency_code: XTZ
 ---
 
 ![]({{ page.featured_image }})

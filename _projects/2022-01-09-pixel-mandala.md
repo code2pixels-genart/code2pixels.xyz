@@ -9,6 +9,9 @@ thumb_image: "/images/home/pixel-mandala-thumb.png"
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/6315
 
+blockchain_name: Tezos
+currency_symbol: ꜩ
+currency_code: XTZ
 ---
 
 ![]({{ page.featured_image }})
