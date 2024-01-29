@@ -1,16 +1,18 @@
 ---
 title: 'Crossing Paths'
 subtitle: 'An ode to the crossing paths in life'
-categories:
-  Generative
-  NFT
-  Tezos
-  fx(hash)
 date: 2022-05-24 17:17:00
 description: Launched in 2022, the Crossing Paths series of generative art celebrates the paths and crossroads in life.
 featured_image: "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
 thumb_image: "/images/home/crossing-paths-thumb.jpg"
 
+categories:
+  - Generative
+  - NFT
+  - Tezos
+  - XTZ
+  - fx(hash)
+  
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/13531
 

@@ -6,6 +6,14 @@ description: When Lives Mingle is a generative series launched on the Prohibitio
 featured_image: '/images/when-lives-mingle/8_WhenLivesMingle_by_code2pixels_0x15be08c438e9024d6cf3a3dd9a41d26190bf92c2f0bdb78ea14427cd317cf2c3.png'
 thumb_image: "/images/home/when-lives-mingle-thumb.jpg"
 
+categories:
+  - Generative
+  - NFT
+  - Arbitrum
+  - Ethereum L2
+  - Prohibition
+  - ETH
+
 marketplace: Prohibition
 marketplace_link: https://prohibition.art/project/when-lives-mingle
 

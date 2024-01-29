@@ -13,6 +13,7 @@ layout: default
 			<span style="float:right; cursor: crosshair;" class="button" title="{{ page.blockchain_name }} - {{ page.currency_code }}">{{ page.currency_symbol }}</span>
 		{% endif %}
 		
+
 		<h6>{{ page.date | date: "%b %Y"  }}</h6>
 
 
@@ -35,8 +36,8 @@ layout: default
 		</a> 
 		{% endif %}
 
-
 	<hr>
+
 
 
 	</div>
@@ -47,6 +48,17 @@ layout: default
 
 	{{ page.content }}
 
+	<!-- Categories -->
+
+	<hr>
+	<div style="text-align: center;">
+		{% for category in page.categories %}
+			<span style="float:center; cursor: crosshair;" class="button button--light" title="{{ category }} - {{ page.currency_code }}">{{ category }}</span>
+		{% endfor %}
+	</div>
+
+
+	<!-- External Link -->
 	{% if page.marketplace %}
 		<a style="float:right" href="{{ page.marketplace_link }}" class="button button--large" target="_blank">View in {{ page.marketplace }}
 			<div class="icon bassline">
@@ -64,6 +76,5 @@ layout: default
 			</div>
 		</a>
 	{% endif %}
-
 
 </section>
