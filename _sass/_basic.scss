@@ -565,3 +565,13 @@ iframe {
     top: .125em;
     position: relative;
 }
+
+
+/* TEZ SYMBOL */
+
+@media only screen and (max-width: 600px) {
+  .tezos-symbol {
+    content: 'XTZ'; /* Display 'XTZ' or any alternative text */
+  	font-size: 1em; /* Adjust the font size accordingly */
+  }
+}
