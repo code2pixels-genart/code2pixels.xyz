@@ -62,22 +62,24 @@ social_settings:
   linkedin_url: ''
 
 links:
+  - title: "Contact"
+    url: '/contact'
   - title: "Instagram"
     url: 'https://www.instagram.com/code2pixels'
   - title: "Twitter"
     url: 'https://twitter.com/code2pixels_'
+  - title: "OpenSea"
+    url: 'https://opensea.io/code2pixels'
+  - title: "Teia"
+    url: 'https://www.teia.art/code2pixels'
+  - title: "fx(hash)"
+    url: 'https://www.fxhash.xyz/u/code2pixels'
   - title: "Prohibition"
     url: 'https://prohibition.art/u/code2pixels'
   - title: "Objkt"
     url: 'https://objkt.com/@code2pixels'
-  - title: "fx(hash)"
-    url: 'https://www.fxhash.xyz/u/code2pixels'
   - title: "8bidou"
     url: 'https://8x8.teztok.com/user/tz1YinhT4JT3ngF9pMYBySNVrWDYhLNEfsYE'
-  - title: "Teia"
-    url: 'https://www.teia.art/code2pixels'
-  - title: "OpenSea"
-    url: 'https://opensea.io/code2pixels'
 
 light_color_settings:
   background_color: '#ffffff'
