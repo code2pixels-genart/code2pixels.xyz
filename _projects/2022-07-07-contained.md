@@ -29,15 +29,21 @@ currency_code: XTZ
 
 ## {{ page.title }}
 
-This sculpture is a unique and personal piece that captures the essence of the individual. The shapes and colors represent the different aspects of the self, such as the mind, body, and emotions. The constant movement of the element inside represents the constant change and growth that takes place within the self. The glass is clear, allowing us to see into ourselves, and the inner shape is simple yet dynamic, representing the complex nature of our inner selves. The colors and patterns inside the glass represent the unique and individual elements that make up our personalities, it tries to capture the part of us that is most private and intimate. 
+<i>Contained</i> is about accepting ourselves, warts and all. It is about recognizing that we are all different, and that this is what makes us beautiful. Each person's inner self is different, and this work tries to capture that individuality.
 
-It is the source of our idiosyncrasies, the things that make us unique. 
+Since the work is generative, each viewer will see a different piece. You need to be synced to the Tezos network in order to see your unique variation. If you are not synced, every time the work is reloaded a new iteration will appear.
 
-This piece is about accepting ourselves, warts and all. It is about recognizing that we are all different, and that this is what makes us beautiful. Each person's inner self is different, and this work tries to capture that individuality.
-
-Since the work is generative, each viewer will see a different piece. You need to be synced in order to see your unique variation. If you are not synced, every time the work is reloaded a new iteration will appear.
 
 ---
+  <video muted autoplay loop preload width="800" height="800" style="max-width: 100%; height: auto; margin: 0 auto; display: block;">
+    <source src="/images/contained/contained-pre-release.m4v" type="video/m4v">
+    <source src="/images/contained/contained-pre-release.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+---
+
+<img src= "/images/contained/Contained_Cover_2.jpg">
 
 #### How to interact with it?
 - Click and drag to explore the virtual sculpture
