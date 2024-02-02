@@ -6,12 +6,14 @@ description: Launched in 2022, the Crossing Paths series of generative art celeb
 featured_image: "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
 thumb_image: "/images/home/crossing-paths-thumb.jpg"
 
-categories:
-  - Generative
+tags:
+  - Generative collection
+  - Animated
   - NFT
+  - fx(hash)
   - Tezos
   - XTZ
-  - fx(hash)
+  - 32 editions
   
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/13531

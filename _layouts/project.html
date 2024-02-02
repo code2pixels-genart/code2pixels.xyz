@@ -48,16 +48,20 @@ layout: default
 
 	{{ page.content }}
 
-	<!-- Categories -->
+	<!-- Tags -->
 
 	<hr>
-	<div style="text-align: center;">
-		{% for category in page.categories %}
-			<span style="float:center; cursor: crosshair;" class="button button--light" title="{{ category }} - {{ page.currency_code }}">{{ category }}</span>
+	<div style="text-align: center;" title="Tags">
+		<span style="float:center; cursor: crosshair; margin-bottom: 5px;" class="button" title="Tags">Tags</span>
+		<br>
+		<br>
+		{% for category in page.tags %}
+			<span style="float:center; cursor: crosshair; margin-bottom: 5px;" class="button button--light" title="{{ category }}">{{ category }}</span>
 		{% endfor %}
 	</div>
 
 
+	<hr>
 	<!-- External Link -->
 	{% if page.marketplace %}
 		<a style="float:right" href="{{ page.marketplace_link }}" class="button button--large" target="_blank">View in {{ page.marketplace }}

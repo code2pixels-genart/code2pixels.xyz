@@ -6,6 +6,18 @@ description: Interactive NFTs created in 2021 in the final months of Hic et Nunc
 featured_image: "/images/hicetnunc/code2pixels05.jpg"
 thumb_image: "/images/home/hicetnunc-thumb.jpg"
 
+tags:
+  - Generative
+  - Interactive
+  - NFT
+  - Teia
+  - Hic et nunc
+  - hicetnunc
+  - h=n
+  - Tezos
+  - XTZ
+  - Series of 12
+  - 20 editions each
 
 marketplace: teia.art
 marketplace_link: https://www.teia.art/code2pixels

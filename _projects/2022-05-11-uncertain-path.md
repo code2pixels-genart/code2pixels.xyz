@@ -6,6 +6,14 @@ description: Uncertain Path is a generative series launched on the fx(hash) plat
 featured_image: "/images/uncertain-path/16-oo9Sbtwej9quH8Q3wx6WE2myXetHc6Yk113NenABdjyQ1VWJLEh_1_1.png"
 thumb_image: "/images/home/uncertain-path-thumb.jpg"
 
+tags:
+  - Generative collection
+  - NFT
+  - fx(hash)
+  - Tezos
+  - XTZ
+  - 32 editions
+
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/12787
 

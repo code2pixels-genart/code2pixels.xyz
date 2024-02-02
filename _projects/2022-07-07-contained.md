@@ -6,6 +6,16 @@ description: Interactive 3D sculpture that captures the essence of the individua
 featured_image: "/images/contained/Contained_Cover.jpg"
 thumb_image: "/images/home/contained-thumb.jpg"
 
+tags:
+  - Interactive
+  - Generative
+  - 3D
+  - NFT
+  - Objkt
+  - Tezos
+  - XTZ
+  - 1/1
+
 marketplace: Objkt
 marketplace_link: https://objkt.com/tokens/KT1SuXxx9V4mdmMmRUvFxVH5eiVj9BrUaRDu/1
 

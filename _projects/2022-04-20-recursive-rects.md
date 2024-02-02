@@ -6,6 +6,14 @@ description: Recursive Rects is a generative series launched on the fx(hash) pla
 featured_image: "/images/recursive-rects/recursive-rects-09.png"
 thumb_image: "/images/home/recursive-rects-thumb.jpg"
 
+tags:
+  - Generative collection
+  - NFT
+  - fx(hash)
+  - Tezos
+  - XTZ
+  - 64 editions
+
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/11601
 

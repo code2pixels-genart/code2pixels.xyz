@@ -6,6 +6,21 @@ description: Collection of pixelated mandalas.
 featured_image: "/images/pixel-mandala/83.png"
 thumb_image: "/images/home/pixel-mandala-thumb.png"
 
+tags:
+  - Generative collection
+  - Pixel Art
+  - 4x4
+  - 8x8
+  - 16x16
+  - 32x32
+  - 64x64
+  - 128x128
+  - NFT
+  - fx(hash)
+  - Tezos
+  - XTZ
+  - 104 editions
+
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/6315
 
