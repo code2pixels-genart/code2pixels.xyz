@@ -1,7 +1,0 @@
-# sample file: https://docs.netlify.com/configure-builds/file-based-configuration/#sample-netlify-toml-file
-
-[build]
-
-[context.blog]
-  publish = "_site/"
-  command = "jekyll build"
