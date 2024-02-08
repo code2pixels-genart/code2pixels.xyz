@@ -22,6 +22,8 @@ tags:
 marketplace: teia.art
 marketplace_link: https://www.teia.art/code2pixels
 
+sold_out: true
+
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ

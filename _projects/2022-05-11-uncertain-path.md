@@ -17,6 +17,8 @@ tags:
 marketplace: fx(hash)
 marketplace_link: https://www.fxhash.xyz/generative/12787
 
+sold_out: true
+
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ

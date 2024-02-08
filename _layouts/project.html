@@ -8,13 +8,22 @@ layout: default
 
 		<h1>{{ page.title }}</h1>
 		<h3>{{ page.subtitle }}</h3>
-
+		
 		{% if page.blockchain_name %}
+			{% if page.sold_out==true %}
+				<span style="float:right; cursor: crosshair;" class="button button--light" title="Sold Out">Sold Out</span>
+			{% else %}
+				<span style="float:right; cursor: crosshair;" class="button button--light" title="Available on primary">Available</span>
+			{% endif %}
+
 			<span style="float:right; cursor: crosshair;" class="button tezos-symbol" title="{{ page.blockchain_name }} - {{ page.currency_code }}">{{ page.currency_symbol }}</span>
 		{% endif %}
-		
+
+
 
 		<h6>{{ page.date | date: "%b %Y"  }}</h6>
+
+
 
 
 		{% if page.marketplace %}
@@ -35,6 +44,7 @@ layout: default
 		</div>
 		</a> 
 		{% endif %}
+
 
 	<hr>
 

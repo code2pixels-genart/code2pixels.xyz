@@ -19,6 +19,8 @@ tags:
 marketplace: Objkt
 marketplace_link: https://objkt.com/tokens/KT1SuXxx9V4mdmMmRUvFxVH5eiVj9BrUaRDu/1
 
+sold_out: true
+
 blockchain_name: Tezos
 
 currency_symbol: ꜩ
