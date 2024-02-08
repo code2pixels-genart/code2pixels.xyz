@@ -65,8 +65,8 @@ layout: default
 		<span style="float:center; cursor: crosshair; margin-bottom: 5px;" class="button" title="Tags">Tags</span>
 		<br>
 		<br>
-		{% for category in page.tags %}
-			<span style="float:center; cursor: crosshair; margin-bottom: 5px;" class="button button--light" title="{{ category }}">{{ category }}</span>
+		{% for tag in page.tags %}
+			<span style="float:center; cursor: crosshair; margin-bottom: 5px;" class="button button--light" title="{{ tag }}">{{ tag }}</span>
 		{% endfor %}
 	</div>
 
