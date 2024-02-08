@@ -40,12 +40,13 @@ Crossing Paths was created inspired by La Longue Marche (1974), a series of acry
 	<img src="/images/crossing-paths/07-oohn84GTBeE2M7hUJMU1ooUY3ShWunB7y3dUtz4BS5XLdstXDZE_1_1.png" title="Crossing Paths #07">
 </div>
 
-<div class="gallery" data-columns="4">
+<div class="gallery" data-columns="3">
+	<img src="/images/crossing-paths/crossing-paths-29.png" title="Crossing Paths #29">
 	<img src="/images/crossing-paths/crossing-paths-18.png" title="Crossing Paths #18">
 	<img src="/images/crossing-paths/crossing-paths-11.png" title="Crossing Paths #11">
-	<img src="/images/crossing-paths/crossing-paths-29.png" title="Crossing Paths #29">
-	<img src="/images/crossing-paths/crossing-paths-24.png" title="Crossing Paths #24">
 </div>
+
+<img src="/images/crossing-paths/crossing-paths-24.png" title="Crossing Paths #24">
 
 <div class="gallery" data-columns="2">
 	<img src="/images/crossing-paths/31-oo3oCwmQXp8fYzweP7zBxfvfxKjaZjPsz1SfG3dDPC1FyTvZpba_1_1.png" title="Crossing Paths #31">

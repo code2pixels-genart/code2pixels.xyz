@@ -52,8 +52,6 @@ Each piece extends an invitation to contemplate the intricate fabric of human co
 	<img src="/images/when-lives-mingle/when-lives-mingle-15.png" title="When Lives Mingle #15">
 </div>
 
+<img src="/images/when-lives-mingle/4_WhenLivesMingle_by_code2pixels_0x9e9712586bbe9e1b74d2f8c8ab84df1bdc90a3f9d0627b38a5fa74f37af0c5c4.png" title="When Lives Mingle #4">
 
-<div class="gallery" data-columns="2">
-	<img src="/images/when-lives-mingle/4_WhenLivesMingle_by_code2pixels_0x9e9712586bbe9e1b74d2f8c8ab84df1bdc90a3f9d0627b38a5fa74f37af0c5c4.png" title="When Lives Mingle #4">
-	<img src="/images/when-lives-mingle/18_WhenLivesMingle_by_code2pixels_0x69c170f4cafb2e98d04baccd331d698a84f817568421a32a5a2eef21169f4c25.png" title="When Lives Mingle #10">
-</div>
+<img src="/images/when-lives-mingle/18_WhenLivesMingle_by_code2pixels_0x69c170f4cafb2e98d04baccd331d698a84f817568421a32a5a2eef21169f4c25.png" title="When Lives Mingle #10">
