@@ -35,10 +35,10 @@ Interactive NFTs created in 2021 in the final months of Hic et Nunc.
 From 22 Sept 2021 (<a href="https://www.teia.art/objkt/342884" target="_blank">code2pixels - #01</a>) to 22 Oct 2021 (<a href="https://www.teia.art/objkt/342884" target="_blank">c2p#12</a>).
 
 <div class="gallery" data-columns="4">
-	<img src="/images/hicetnunc/c2p12.jpg" title="c2p#12">
-	<img src="/images/hicetnunc/c2p11.jpg" title="c2p#11">
-	<img src="/images/hicetnunc/code2pixels05.jpg" title="code2pixels#05">
-	<img src="/images/hicetnunc/code2pixels07.jpg" title="code2pixels#07">
+	<img src="/images/hicetnunc/c2p12.jpg" title="c2p#12" alt="c2p#12">
+	<img src="/images/hicetnunc/c2p11.jpg" title="c2p#11" alt="c2p#11">
+	<img src="/images/hicetnunc/code2pixels05.jpg" title="code2pixels#05" alt="code2pixels#05">
+	<img src="/images/hicetnunc/code2pixels07.jpg" title="code2pixels#07" alt="code2pixels#07">
 
 </div>
 

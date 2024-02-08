@@ -45,7 +45,7 @@ Since the work is generative, each viewer will see a different piece. You need t
 
 ---
 
-<img src= "/images/contained/Contained_Cover_2.jpg">
+<img src= "/images/contained/Contained_Cover_2.jpg" title="Contained" alt="Contained">
 
 #### How to interact with it?
 - Click and drag to explore the virtual sculpture
