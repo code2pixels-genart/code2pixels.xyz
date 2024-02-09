@@ -1,9 +1,9 @@
 ---
-title: 'Contained'
+title: &title 'Contained'
 subtitle: 'Interactive 3D sculptures representing the essence of the individual'
-date: 2022-07-07 15:00:00
-description: Interactive 3D sculpture that captures the essence of the individual
-featured_image: "/images/contained/Contained_Cover.jpg"
+date: &date 2022-07-07 15:00:00
+description: &description Interactive 3D sculpture that captures the essence of the individual
+featured_image: &featured_image "/images/contained/Contained_Cover.jpg"
 thumb_image: "/images/home/contained-thumb.jpg"
 
 tags:
@@ -25,6 +25,17 @@ blockchain_name: Tezos
 
 currency_symbol: ꜩ
 currency_code: XTZ
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 1
+  artform: Generative Art
+  image: *featured_image
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 ![]({{ page.featured_image }})

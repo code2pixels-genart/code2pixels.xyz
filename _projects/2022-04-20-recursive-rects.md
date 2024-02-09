@@ -1,9 +1,9 @@
 ---
-title: 'Recursive Rects'
+title: &title 'Recursive Rects'
 subtitle: 'Generative series launched on fx(hash) in 2022'
-date: 2022-04-20 19:07:00
-description: Recursive Rects is a generative series launched on the fx(hash) platform in 2022. 
-featured_image: "/images/recursive-rects/recursive-rects-09.png"
+date: &date 2022-04-20 19:07:00
+description: &description Recursive Rects is a generative series launched on the fx(hash) platform in 2022. 
+featured_image: &featured_image "/images/recursive-rects/recursive-rects-09.png"
 thumb_image: "/images/home/recursive-rects-thumb.jpg"
 
 tags:
@@ -22,6 +22,17 @@ sold_out: true
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 64
+  artform: Generative Art
+  image: *featured_image
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 ![]({{ page.featured_image }})

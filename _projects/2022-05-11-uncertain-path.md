@@ -1,9 +1,9 @@
 ---
-title: 'Uncertain Path'
+title: &title 'Uncertain Path'
 subtitle: 'An ode to the unpredictability of the paths we take in life'
-date: 2022-05-11 15:00:00
-description: Uncertain Path is a generative series launched on the fx(hash) platform in 2022. 
-featured_image: "/images/uncertain-path/16-oo9Sbtwej9quH8Q3wx6WE2myXetHc6Yk113NenABdjyQ1VWJLEh_1_1.png"
+date: &date 2022-05-11 15:00:00
+description: &description Uncertain Path is a generative series launched on the fx(hash) platform in 2022. 
+featured_image: &featured_image "/images/uncertain-path/16-oo9Sbtwej9quH8Q3wx6WE2myXetHc6Yk113NenABdjyQ1VWJLEh_1_1.png"
 thumb_image: "/images/home/uncertain-path-thumb.jpg"
 
 tags:
@@ -22,6 +22,19 @@ sold_out: true
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ
+
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 32
+  artform: Generative Art
+  image: *featured_image
+  isBasedOn: "La Longue Marche (1974), by Julio Le Parc"
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 ![]({{ page.featured_image }})

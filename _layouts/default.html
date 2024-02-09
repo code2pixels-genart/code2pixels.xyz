@@ -79,6 +79,45 @@
 	{{ site.data.settings.advanced_settings.header_js }}
 	{% endif %}
 	
+
+    <!-- Schema Markup Script -->
+    {% if page.schema %}
+		<script type="application/ld+json">
+		{
+		    "@context": "http://schema.org",
+		    "@type": "VisualArtwork",
+		    "name": "{{page.schema.title}}",
+		    "description": "{{page.schema.description}}",
+		    "abstract": "{{page.schema.abstract}}",
+		    "artist": "code2pixels",
+		    "author": "code2pixels",
+		    "creator": {
+		        "@type": "Person",
+		        "name": "code2pixels",
+		        "url": "code2pixels.xyz"
+		    },
+		    "dateCreated": "{{page.schema.date}}",
+		    "artMedium": "{{page.schema.artMedium}}",
+		    {% if page.schema.artEdition %}"artEdition": "{{page.schema.artEdition}}",  {% endif %}
+		    "artform": "{{page.schema.artform}}",
+		    "keywords": [{% for tag in page.tags %}"{{ tag }}", {% endfor %}],
+		    "image": "{{ site.url }}{{page.schema.image}}",
+		    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br",
+		    {% if page.schema.isBasedOn %}
+		    "isBasedOn": "{{page.schema.isBasedOn}}",
+		    {% endif %}
+		    {% if page.schema.material %}
+		    "material": "{{page.schema.material}}",
+		    {% endif %}
+		    "locationCreated": {
+		        "@type": "Place",
+		        "name": "{{page.schema.locationCreated}}"
+		    },
+		}
+		</script>
+
+    {% endif %}
+
 </head>
 
 

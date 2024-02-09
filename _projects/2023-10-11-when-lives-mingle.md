@@ -1,9 +1,9 @@
 ---
-title: 'When Lives Mingle'
+title: &title 'When Lives Mingle'
 subtitle: 'What happens in the intersections of unique personal narratives'
-date: 2023-10-11 13:00:00
-description: When Lives Mingle is a generative series launched on the Prohibition platform in 2023. 
-featured_image: '/images/when-lives-mingle/8_WhenLivesMingle_by_code2pixels_0x15be08c438e9024d6cf3a3dd9a41d26190bf92c2f0bdb78ea14427cd317cf2c3.png'
+date: &date 2023-10-11 13:00:00
+description: &description When Lives Mingle is a generative series launched on the Prohibition platform in 2023. 
+featured_image: &featured_image '/images/when-lives-mingle/8_WhenLivesMingle_by_code2pixels_0x15be08c438e9024d6cf3a3dd9a41d26190bf92c2f0bdb78ea14427cd317cf2c3.png'
 thumb_image: "/images/home/when-lives-mingle-thumb.jpg"
 
 tags:
@@ -21,6 +21,17 @@ marketplace_link: https://prohibition.art/project/when-lives-mingle
 blockchain_name: Arbitrum (ETH L2)
 currency_symbol: Ξ
 currency_code: ETH
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 54
+  artform: Generative Art
+  image: *featured_image
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 ![]({{ page.featured_image }})

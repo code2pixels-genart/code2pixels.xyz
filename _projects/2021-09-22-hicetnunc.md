@@ -1,9 +1,9 @@
 ---
-title: 'Interactive h=n series'
+title: &title 'Interactive h=n series'
 subtitle: 'Collection of interactive sketches minted on Hic et Nunc in 2021'
-date: 2021-09-22 15:18:00
-description: Interactive NFTs created in 2021 in the final months of Hic et Nunc. 
-featured_image: "/images/hicetnunc/code2pixels05.jpg"
+date: &date 2021-09-22 15:18:00
+description: &description Interactive NFTs created in 2021 in the final months of Hic et Nunc. 
+featured_image: &featured_image "/images/hicetnunc/code2pixels05.jpg"
 thumb_image: "/images/home/hicetnunc-thumb.jpg"
 
 tags:
@@ -27,6 +27,17 @@ sold_out: true
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 12
+  artform: Generative/Interactive Art
+  image: *featured_image
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 

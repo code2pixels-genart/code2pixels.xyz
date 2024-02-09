@@ -1,9 +1,9 @@
 ---
-title: 'Crossing Paths'
+title: &title 'Crossing Paths'
 subtitle: 'An ode to the crossing paths in life'
-date: 2022-05-24 17:17:00
-description: Launched in 2022, the Crossing Paths series of generative art celebrates the paths and crossroads in life.
-featured_image: "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
+date: &date 2022-05-24 17:17:00
+description: &description Launched in 2022, the Crossing Paths series of generative art celebrates the paths and crossroads in life.
+featured_image: &featured_image "/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png"
 thumb_image: "/images/home/crossing-paths-thumb.jpg"
 
 tags:
@@ -23,6 +23,18 @@ sold_out: true
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 32
+  artform: Generative Art
+  image: *featured_image
+  isBasedOn: "La Longue Marche (1974), by Julio Le Parc"
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 ![]({{ page.featured_image }})

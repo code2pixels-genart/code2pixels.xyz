@@ -1,9 +1,9 @@
 ---
-title: 'Pixel Mandala'
+title: &title 'Pixel Mandala'
 subtitle: 'Collection of pixelated mandalas'
-date: 2022-01-09 08:37:00
-description: Collection of pixelated mandalas. 
-featured_image: "/images/pixel-mandala/83.png"
+date: &date 2022-01-09 08:37:00
+description: &description Collection of pixelated mandalas. 
+featured_image: &featured_image "/images/pixel-mandala/83.png"
 thumb_image: "/images/home/pixel-mandala-thumb.png"
 
 tags:
@@ -29,6 +29,17 @@ sold_out: true
 blockchain_name: Tezos
 currency_symbol: ꜩ
 currency_code: XTZ
+
+schema:
+  title: *title
+  description: *description
+  abstract: *description
+  date: *date
+  artMedium: Digital
+  artEdition: 104
+  artform: Generative Art
+  image: *featured_image
+  locationCreated: Belo Horizonte, Brazil
 ---
 
 ![]({{ page.featured_image }})
