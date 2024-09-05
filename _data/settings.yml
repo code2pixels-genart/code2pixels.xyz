@@ -66,8 +66,10 @@ links:
     url: '/contact'
   - title: "Instagram"
     url: 'https://www.instagram.com/code2pixels'
-  - title: "Twitter"
+  - title: "<s>Twitter</s>"
     url: 'https://twitter.com/code2pixels_'
+  - title: "Warpcast"
+    url: 'https://warpcast.com/code2pixels'
   - title: "OpenSea"
     url: 'https://opensea.io/code2pixels'
   - title: "Teia"
