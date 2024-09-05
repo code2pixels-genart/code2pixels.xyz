@@ -8,6 +8,6 @@ featured_image: /images/about/code2pixels_tumblr.jpg
 ![](/images/about/code2pixels_tumblr.jpg)
 
 
-code2pixels is a generative artist who creates **generative, interactive, and abstract art** through algorithms, conceptually exploring human connections, inner landscapes, and life's narratives. Some artworks invite engagement, while others prompt contemplation, revealing latent meanings.
+code2pixels is an artist-programmer who uses algorithms to craft generative art in both digital and physical forms. His work emphasizes the value of relationships and time, offering a reflective counterbalance to the fast pace of modern life.
 
 
