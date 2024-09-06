@@ -8,8 +8,10 @@ layout: default
 
 		<h1>{{ page.title }}</h1>
 		<h3>{{ page.subtitle }}</h3>
+
 		
-		{% if page.blockchain_name %}
+		
+<!-- 		{% if page.blockchain_name %}
 			{% if page.sold_out==true %}
 				<span style="float:right; cursor: crosshair;" class="button button--light" title="Sold Out">Sold Out</span>
 			{% else %}
@@ -17,7 +19,7 @@ layout: default
 			{% endif %}
 
 			<span style="float:right; cursor: crosshair;" class="button tezos-symbol" title="{{ page.blockchain_name }} - {{ page.currency_code }}">{{ page.currency_symbol }}</span>
-		{% endif %}
+		{% endif %} -->
 
 
 
@@ -26,7 +28,7 @@ layout: default
 
 
 
-		{% if page.marketplace %}
+		<!-- {% if page.marketplace %}
 		<a style="float:right" href="{{ page.marketplace_link }}" class="button button--large" target="_blank">{{ page.marketplace }} 
 		<div class="icon bassline">
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -43,7 +45,7 @@ layout: default
 			v144v16H64v-16V96h16h144V64V32H80L80,32z"/></svg>
 		</div>
 		</a> 
-		{% endif %}
+		{% endif %} -->
 
 
 	<hr>
