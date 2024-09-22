@@ -1,13 +1,19 @@
+// ToDo
+// [ ] Add UI to add/remove values
+// [ ] Add row/column shift with arrow keys
+
 var debug=false;
 
 function drawClock() {
   background(0,0,0);  // Set background to black
 
+  let currentDate = nf(year(), 2) + nf(month(), 2) + nf(day(), 2); // Format time as HHMMSS
   let currentTime = nf(hour(), 2) + nf(minute(), 2) + nf(second(), 2); // Format time as HHMMSS
-  let currentTimeCells = currentTime
+  let currentTimeCells = str(currentDate)+str(currentTime)
+  // print()
 
 	// Define the total number of columns
-	let totalColumns = 18;
+	let totalColumns = currentTimeCells.length;
 
 	// Calculate cell sizes based on the canvas dimensions
 	let cellSizeX = width / totalColumns; // Cell width fills the whole width
@@ -24,7 +30,13 @@ function drawClock() {
     for (let x = 0; x < cols; x++) {
       let posX = x * cellSizeX + cellSizeX / 2;  // Calculate X position for text
       let posY = y * cellSizeY + cellSizeY / 2;  // Calculate Y position for text      
-      drawBinaryGrid(posX-cellSizeX/2,posY-cellSizeY/2,cellSizeX,cellSizeY, str(currentTimeCells[(x+y)%6]));
+      drawBinaryGrid(posX-cellSizeX/2,posY-cellSizeY/2,cellSizeX,cellSizeY, str(currentTimeCells[(x)%currentTimeCells.length]));
+      if(debug){
+      	push()
+      	 	fill(0,255,0,120)
+      		text("("+y+","+x+")",posX-cellSizeX/2+5,posY+cellSizeY/2-5)
+      	pop()
+      }
     }
   }
 
@@ -93,9 +105,9 @@ function drawBinaryGrid(x, y, gridWidth, gridHeight, character) {
                 let yPos = y + row * squareSizeY;
                 let binaryValue = (row === 0) ? bin1[col] : bin2[col];
                 if (binaryValue === '1') {
-                    fill(c2p[3]); // Black square
+                    fill(customC2p[0]); // Black square
                 } else {
-                    fill(c2p[0]); // White square
+                    fill(customC2p[3]); // White square
                 }
                 rect(xPos, yPos, squareSizeX+1, squareSizeY+1);
             }
@@ -108,10 +120,10 @@ function drawBinaryGrid(x, y, gridWidth, gridHeight, character) {
         	fill(0,0,255,100)
         	rect(x, y, gridWidth, gridHeight)
 
-        	fill(255,0,0,120)
+        	fill(255,0,0,150)
         	noStroke()
         	// rectMode(CENTER)
-        	textSize(gridHeight)
+        	textSize(gridHeight*0.75)
         	text(character,x, y, gridWidth, gridHeight)
 
         	pop()
@@ -137,5 +149,13 @@ function keyPressed() {
 		debug = !debug;
 		console.log("Debug is "+debug)
 	}
+
+	
+	// Toggle fullscreen mode with 'F' key
+	if (key === 'c' || key === 'C') {
+		customC2p = shuffleArray(c2p);
+	}
+
+
 }
 

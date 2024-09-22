@@ -30,6 +30,7 @@ new p5();
 var cp=0; // color palette index
 var bgcolor; 
 const c2p = ['#0A2342','#CC333F','#EB6841','#EDC951','#00A0B0'];
+var customC2p = (c2p);
 let isFullScreen = false;
 let currentClockScript;
 
@@ -82,4 +83,14 @@ function keyPressed() {
 	if (key === '1') loadClock("0001");
 	if (key === '2') loadClock("0002");
 	if (key === '3') loadClock("0003");
+}
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = floor(random(i + 1)); // Get a random index
+        // Swap array[i] with array[j]
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
