@@ -3,6 +3,8 @@
 // [ ] Add row/column shift with arrow keys
 
 var debug=false;
+var xShift = 0;
+var yShift = 0;
 
 function drawClock() {
   background(0,0,0);  // Set background to black
@@ -30,7 +32,7 @@ function drawClock() {
     for (let x = 0; x < cols; x++) {
       let posX = x * cellSizeX + cellSizeX / 2;  // Calculate X position for text
       let posY = y * cellSizeY + cellSizeY / 2;  // Calculate Y position for text      
-      drawBinaryGrid(posX-cellSizeX/2,posY-cellSizeY/2,cellSizeX,cellSizeY, str(currentTimeCells[(x)%currentTimeCells.length]));
+      drawBinaryGrid(posX-cellSizeX/2,posY-cellSizeY/2,cellSizeX,cellSizeY, str(currentTimeCells[abs((x+xShift))%currentTimeCells.length]));
       if(debug){
       	push()
       	 	fill(0,255,0,120)
@@ -155,6 +157,22 @@ function keyPressed() {
 	if (key === 'c' || key === 'C') {
 		customC2p = shuffleArray(c2p);
 	}
+
+    // Adjust xShift and yShift with arrow keys
+    if (keyCode === LEFT_ARROW) {
+        xShift += 1; // Move left
+        print("xShift: "+xShift)
+    } else if (keyCode === RIGHT_ARROW) {
+        xShift -= 1; // Move right
+        print("xShift: "+xShift)
+    } else if (keyCode === UP_ARROW) {
+        yShift -= 1; // Move up
+        print("yShift: "+yShift)
+    } else if (keyCode === DOWN_ARROW) {
+        yShift += 1; // Move down
+        print("yShift: "+yShift)
+    }
+
 
 
 }
