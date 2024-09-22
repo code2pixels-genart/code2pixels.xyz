@@ -15,7 +15,7 @@ function drawClock() {
   // print()
 
 	// Define the total number of columns
-	let totalColumns = currentTimeCells.length;
+	let totalColumns = currentTimeCells.length*2;
 
 	// Calculate cell sizes based on the canvas dimensions
 	let cellSizeX = width / totalColumns; // Cell width fills the whole width
@@ -32,7 +32,7 @@ function drawClock() {
     for (let x = 0; x < cols; x++) {
       let posX = x * cellSizeX + cellSizeX / 2;  // Calculate X position for text
       let posY = y * cellSizeY + cellSizeY / 2;  // Calculate Y position for text      
-      drawBinaryGrid(posX-cellSizeX/2,posY-cellSizeY/2,cellSizeX,cellSizeY, str(currentTimeCells[abs((x+xShift))%currentTimeCells.length]));
+      drawBinaryGrid(posX-cellSizeX/2,posY-cellSizeY/2,cellSizeX,cellSizeY, str(currentTimeCells[abs((x+xShift+y+yShift))%currentTimeCells.length]));
       if(debug){
       	push()
       	 	fill(0,255,0,120)
@@ -166,10 +166,10 @@ function keyPressed() {
         xShift -= 1; // Move right
         print("xShift: "+xShift)
     } else if (keyCode === UP_ARROW) {
-        yShift -= 1; // Move up
+        yShift += 1; // Move up
         print("yShift: "+yShift)
     } else if (keyCode === DOWN_ARROW) {
-        yShift += 1; // Move down
+        yShift -= 1; // Move down
         print("yShift: "+yShift)
     }
 
