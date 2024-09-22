@@ -30,7 +30,7 @@ new p5();
 var cp=0; // color palette index
 var bgcolor; 
 const c2p = ['#0A2342','#CC333F','#EB6841','#EDC951','#00A0B0'];
-var customC2p = (c2p);
+var customC2p = shuffleArray(c2p);
 let isFullScreen = false;
 let currentClockScript;
 
@@ -39,15 +39,15 @@ function setup() {
 	// Create a canvas that fills the window
 	createCanvas(windowWidth, windowHeight);
 	// pixelDensity(2)
+  // Placeholder for clock setup
+  if (typeof setupClock === 'function') {
+    setupClock();
+  }
 	loadClock("0001")
 
 }
 
 function draw() {
-  // Placeholder for clock setup
-  if (typeof setupClock === 'function') {
-    setupClock();
-  }
   // Placeholder for clock drawing
   if (typeof drawClock === 'function') {
     drawClock();
