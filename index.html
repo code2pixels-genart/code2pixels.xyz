@@ -1,7 +1,7 @@
 ---
 layout: clean
 title: c2p crypto text
-description: code2pixels is a generative artist who creates generative, interactive, and abstract art through algorithms
+description: crypto text in an exploration of encoding alphanumeric values in binarry patterns.
 featured_image: /images/about/code2pixels_tumblr.jpg
 colors: ["rgb(0 160 176 / 90%)", "rgb(10 35 66 / 90%)", "rgb(204 51 63 / 90%)", "rgb(235 104 65 / 90%)", "rgb(237 201 81 / 90%)"]
 colorIndex: 0
@@ -20,6 +20,8 @@ tags:
 ---
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -186,47 +188,90 @@ tags:
 
     textarea {
         border: none; 
-/*          border: 1px solid var(--ui-border);*/
-        outline: none; /* Remove the outline on focus */
-        background-color: transparent; /* Make the background transparent */
-        resize: none; /* Prevent resizing */
+    /*          border: 1px solid var(--ui-border);*/
+            outline: none; /* Remove the outline on focus */
+            background-color: transparent; /* Make the background transparent */
+            resize: none; /* Prevent resizing */
+            position: absolute;
+            bottom: 25%;
+            left: 0;
+            width: 25%;
+            height: 50%;
+            resize: none;
+            font-size: 50pt;
+            user-select: var(--ui-border); 
+            caret-color: var(--ui-border); /* Neon green caret */
+            animation: blink 1s step-end infinite;
+          }
+
+
+        /* Mobile-friendly styling */
+        @media (max-width: 768px) {
+            textarea {
+                background-color:  var(--bg-color);;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%; /* Full width on mobile */
+                height: 20vh; /* Small height for mobile, adjust as needed */
+                font-size: 4vw; /* Responsive font size based on viewport width */
+                padding: 10px;
+                border: none; 
+            }
+        }
+
+        textarea::selection{
+            color: var(--bg-color);
+            background-color: var(--text-color);
+        }
+
+
+      @keyframes blink {
+          from, to { caret-color: transparent; }
+          50% { caret-color: #00ff00; }
+      }
+
+    /* QR Code Styles */
+    .qr-code-container {
+        display: none;
         position: absolute;
         bottom: 25%;
-        left: 0;
-        width: 25%;
+        right: 0;
+        width: 20%;
         height: 50%;
         resize: none;
-        font-size: 50pt;
-        user-select: var(--ui-border); 
-        caret-color: var(--ui-border); /* Neon green caret */
-        animation: blink 1s step-end infinite;
-      }
+        z-index: 0;            
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+    }
 
 
     /* Mobile-friendly styling */
     @media (max-width: 768px) {
-        textarea {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%; /* Full width on mobile */
-            height: 20vh; /* Small height for mobile, adjust as needed */
-            font-size: 4vw; /* Responsive font size based on viewport width */
-            padding: 10px;
-            border: none; 
+        .qr-code-container {
+                position: absolute;
+                top: 0;
+                right: 35%;
+                width: 25%;
+                resize: none;
+                z-index: 0;
+                align-items: flex-start;
+                margin: 10px;
+            }
+
+
+        .qr-code-container > canvas {
+            height: fit-content;
         }
     }
 
-    textarea::selection{
-        color: var(--bg-color);
-        background-color: var(--text-color);
+
+    .qr-code-container > canvas {
+        width: 100%;
     }
 
 
-  @keyframes blink {
-      from, to { caret-color: transparent; }
-      50% { caret-color: #00ff00; }
-  }
 </style>
 </head>
 <body>
@@ -241,9 +286,37 @@ tags:
     </button>
 </div>
 
+<!-- QR Code Container -->
+<div id="qr-code-container" class="qr-code-container" style="display: flex;">
+    <canvas id="qr-code-canvas"></canvas>
+</div>
+
+
+<script type="text/javascript">
+    // Initialize the QR code generator
+    let qr;
+
+    window.addEventListener("DOMContentLoaded", function () {
+        // Check if QRious is loaded and initialize QR code
+        qr = new QRious({
+            element: document.getElementById('qr-code-canvas'), // Target canvas element for QR
+            size: 300,
+        });
+
+    });
+    // Function to update the QR code based on input text
+    function updateQRCode(text) {
+        const qrUrl = `https://cryptotext.code2pixels.xyz?text=${encodeURIComponent(text)}`;
+        qr.set({ value: qrUrl }); // Update QR code with the new URL
+        console.log("Updated QR Code URL:", qrUrl); // Debug line
+    }
+
+
+</script>
+
 <script>
-  // List of available colors
-  const c2pHexColors = ['#0A2342', '#CC333F', '#EB6841', '#EDC951', '#00A0B0'];
+    // List of available colors
+    const c2pHexColors = ['#0A2342', '#CC333F', '#EB6841', '#EDC951', '#00A0B0'];
 
     // Configuration object to store settings
     let config = {
@@ -421,7 +494,7 @@ tags:
           // Cell size slider
         const cellSizeLabel = createSpan('Cell Size:');
         cellSizeLabel.parent(container);
-            createElement('br').parent(container);
+        createElement('br').parent(container);
         const cellSizeSlider = createSlider(5, 100, config.cellSize, 1);
         cellSizeSlider.class("slider");
         cellSizeSlider.style("width",'100%')
@@ -438,29 +511,30 @@ tags:
         textInput.attribute('placeholder', 'Enter your text here...'); // Set placeholder text
         textInput.parent(select('#app-container'));
         textInput.input(() => {
-        config.text = textInput.value().toUpperCase();
-        resizeText();
-    });
+            config.text = textInput.value().toUpperCase();
+            updateQRCode(config.text);
+            resizeText();
+        });
         createElement('br').parent(container);
         createElement('br').parent(container);
 
-    // Set the extracted text as the initial value in the textarea
-    const initialText = getTextFromURL();
-    textInput.value(initialText); // Set initial text in the textarea
-    config.text = initialText.toUpperCase(); // Update config with initial text
+        // Set the extracted text as the initial value in the textarea
+        const initialText = getTextFromURL();
+        textInput.value(initialText); // Set initial text in the textarea
+        config.text = initialText.toUpperCase(); // Update config with initial text
 
-    // Function to resize text based on textarea size
-    function resizeText() {
-        const maxFontSize = 100; // Set an upper limit for font size
-        let fontSize = maxFontSize;
+        // Function to resize text based on textarea size
+        function resizeText() {
+            const maxFontSize = 100; // Set an upper limit for font size
+            let fontSize = maxFontSize;
 
-        // Decrease font size until text fits within the textarea
-        textInput.style('font-size', `${fontSize}px`);
-        while (textInput.elt.scrollHeight > textInput.elt.clientHeight || textInput.elt.scrollWidth > textInput.elt.clientWidth) {
-            fontSize -= 1;
+            // Decrease font size until text fits within the textarea
             textInput.style('font-size', `${fontSize}px`);
+            while (textInput.elt.scrollHeight > textInput.elt.clientHeight || textInput.elt.scrollWidth > textInput.elt.clientWidth) {
+                fontSize -= 1;
+                textInput.style('font-size', `${fontSize}px`);
+            }
         }
-    }
 
         // setInterval(() => textInput.elt.focus(), 2500);
 
@@ -472,6 +546,18 @@ tags:
         saveButton.class("btn");
         saveButton.mousePressed(() => {
           saveCanvasImage();
+        });
+
+        // Show QR Code Button
+        const showQRButton = createButton('Toggle QR');
+        showQRButton.parent(container);
+        showQRButton.style("height","10%");
+        showQRButton.style("font-size","x-large");
+        showQRButton.class("btn");
+        showQRButton.mousePressed(() => {
+            const qrContainer = document.getElementById('qr-code-container');
+            console.log(qrContainer)
+            qrContainer.style.display = qrContainer.style.display === 'none' ? 'flex' : 'none';
         });
     }
 
@@ -637,7 +723,7 @@ tags:
       config.backgroundColor = getRandomColor();
       config.activeColor = getRandomColor();
       config.inactiveColor = getRandomColor();
-      config.inactiveColor = (config.activeColor==config.inactiveColor)?getRandomColor():config.inactiveColor;
+      config.inactiveColor = (config.activeColor===config.inactiveColor)?getRandomColor():config.inactiveColor;
       config.borderColor = getRandomColor();
 
       // Trigger a redraw if needed to apply color changes
@@ -662,5 +748,3 @@ tags:
   }
 
 </script>
-
-
