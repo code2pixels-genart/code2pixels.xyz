@@ -228,7 +228,7 @@ tags:
 
       @keyframes blink {
           from, to { caret-color: transparent; }
-          50% { caret-color: #00ff00; }
+          50% { caret-color: var(--text-color); }
       }
 
     /* QR Code Styles */
@@ -268,7 +268,7 @@ tags:
 
 
     .qr-code-container > canvas {
-        width: 100%;
+        width: 90%;
     }
 
 
@@ -287,7 +287,7 @@ tags:
 </div>
 
 <!-- QR Code Container -->
-<div id="qr-code-container" class="qr-code-container" style="display: flex;">
+<div id="qr-code-container" class="qr-code-container" style="display: none;">
     <canvas id="qr-code-canvas"></canvas>
 </div>
 
@@ -310,6 +310,7 @@ tags:
         qr.set({ value: qrUrl }); // Update QR code with the new URL
         console.log("Updated QR Code URL:", qrUrl); // Debug line
     }
+
 
 
 </script>
@@ -373,6 +374,9 @@ tags:
               toggle_UI();
           }
         });
+
+
+        // resizeCanvasToContainer(); // Initial resize to fit the container
     }
 
     function draw() {
@@ -559,21 +563,24 @@ tags:
             console.log(qrContainer)
             qrContainer.style.display = qrContainer.style.display === 'none' ? 'flex' : 'none';
         });
+
+
+        updateQRCode("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
     }
 
-  // Function to toggle UI visibility
-  function toggle_UI() {
+    // Function to toggle UI visibility
+    function toggle_UI() {
       let tu = document.querySelector('.toggle-ui');
       tu.click();
-  }
+    }
 
-  // Function to save the canvas as an image
-  function saveCanvasImage() {
+    // Function to save the canvas as an image
+    function saveCanvasImage() {
       saveCanvas('c2p-cryptotext-'+config.text, 'png'); // Saves the canvas as "canvas-image.png"
-  }
+    }
 
 
-  function drawBinaryText() {
+    function drawBinaryText() {
       const chars = config.text
           .normalize("NFD") // Decompose accented characters
           .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
@@ -623,7 +630,7 @@ tags:
       noStroke();
       rect(currentX,currentY,2,config.cellSize*2);
       pop();
-  }
+    }
 
     function drawCharacterGrid(char, x, y) {
 
@@ -646,19 +653,19 @@ tags:
         }
 
 
-
-      push();
-      textFont('Courier');
-      textAlign(CENTER,CENTER);
-      let text_color = color(config.activeColor);
-      text_color.setAlpha(config.textOpacity);
-      fill(text_color);
-      let text_border_color = color(config.borderColor);
-      text_border_color.setAlpha(config.textOpacity);
-      stroke(text_border_color);
-      textSize(config.cellSize*1.75)
-    text(char,x + config.cellSize*1.5, y + config.cellSize*1);
-    pop();
+        // Draw letter over binary 3x2 grid
+        push();
+        textFont('Courier');
+        textAlign(CENTER,CENTER);
+        let text_color = color(config.activeColor);
+        text_color.setAlpha(config.textOpacity);
+        fill(text_color);
+        let text_border_color = color(config.borderColor);
+        text_border_color.setAlpha(config.textOpacity);
+        stroke(text_border_color);
+        textSize(config.cellSize*1.75)
+        text(char,x + config.cellSize*1.5, y + config.cellSize*1);
+        pop();
 
     }
 
@@ -689,8 +696,8 @@ tags:
     });
 
 
-  // Function to update canvas size based on selected ratio
-  function updateCanvasRatio(ratio) {
+    // Function to update canvas size based on selected ratio
+    function updateCanvasRatio(ratio) {
       let width, height;
       switch (ratio) {
           case '1:1':
@@ -709,17 +716,17 @@ tags:
       config.canvasWidth = width;
       config.canvasHeight = height;
       resizeCanvas(config.canvasWidth, config.canvasHeight);
-  }
+    }
 
     // Function to get the "text" parameter from the current URL
-  function getTextFromURL() {
+    function getTextFromURL() {
       const params = new URLSearchParams(window.location.search);
       return params.get('text') || ''; // Get the "text" parameter or an empty string if not found
-  }
+    }
 
 
-  // Function to assign a random color from the list to each color property
-  function randomizeColors() {
+    // Function to assign a random color from the list to each color property
+    function randomizeColors() {
       config.backgroundColor = getRandomColor();
       config.activeColor = getRandomColor();
       config.inactiveColor = getRandomColor();
@@ -728,23 +735,48 @@ tags:
 
       // Trigger a redraw if needed to apply color changes
       redraw();
-  }
+    }
 
-  // Helper function to pick a random color from `c2pHexColors`
-  function getRandomColor() {
+    // Helper function to pick a random color from `c2pHexColors`
+    function getRandomColor() {
       const randomIndex = Math.floor(Math.random() * c2pHexColors.length);
       return c2pHexColors[randomIndex];
-  }
+    }
 
-  // Function to assign a random color from the list to each color property
-  function resetColors() {
+    // Function to assign a random color from the list to each color property
+    function resetColors() {
         config.backgroundColor= "#000000";
-        config.activeColor= "#00FF00";
+        config.activeColor= "#FFFFFF";
         config.inactiveColor= "#000000";
         config.borderColor= "#000000";
       
       // Trigger a redraw if needed to apply color changes
       redraw();
-  }
+    }
+
+
+    // TODO: WINDOW RESIZE
+    // function windowResized() {
+    //     const margin = 0.35; // Margin to keep around the canvas
+    //     resizeCanvasToAspectRatio(margin);
+    // }
+
+    // function resizeCanvasToAspectRatio(margin) {
+    //     const aspectRatio = config.canvasWidth / config.canvasHeight;
+    //     const availableWidth = windowWidth * (1 - margin);
+    //     const availableHeight = windowHeight * (1 - margin);
+
+    //     if (availableWidth / availableHeight > aspectRatio) {
+    //         // Window is wider than the aspect ratio: set height, calculate width
+    //         config.canvasHeight = availableHeight;
+    //         config.canvasWidth = availableHeight * aspectRatio;
+    //     } else {
+    //         // Window is taller than the aspect ratio: set width, calculate height
+    //         config.canvasWidth = availableWidth;
+    //         config.canvasHeight = availableWidth / aspectRatio;
+    //     }
+
+    //     resizeCanvas(config.canvasWidth, config.canvasHeight);
+    // }
 
 </script>
