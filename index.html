@@ -1,6 +1,6 @@
 ---
-layout: default
-title: (generative | interactive | abstract) art
+layout: clean
+title: c2p crypto text
 description: code2pixels is a generative artist who creates generative, interactive, and abstract art through algorithms
 featured_image: /images/about/code2pixels_tumblr.jpg
 colors: ["rgb(0 160 176 / 90%)", "rgb(10 35 66 / 90%)", "rgb(204 51 63 / 90%)", "rgb(235 104 65 / 90%)", "rgb(237 201 81 / 90%)"]
@@ -18,16 +18,649 @@ tags:
   - Belo Horizonte
 
 ---
-<div style="height: 80vh;"> </div>
-<img  class="fullscreen-bg"  src="/images/home/fullscreen/when-lives-mingle-13.jpg" title="When Lives Mingle #13" alt="When Lives Mingle #13" preload>
 
-<!-- </div> -->
-<!-- <section class="intro">
-	<div class="gallery" data-columns="1">
-	<img src="/images/crossing-paths/01-opAShxDqus5dL2UzFtMdriKAUUDtTKLnbAtaaQbA6JmXYkKq7Kw_1_1.png" title="Crossing Paths #01">
-	<img src="/images/when-lives-mingle/13_WhenLivesMingle_by_code2pixels_0x865382e349dadae37a3fcef20c2857af59b867394aaca3a9bb09e704585f48ad.png" title="When Lives Mingle #13">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
-		<img src="/images/recursive-rects/recursive-rects-17.png" title="Recursive Rects #17">
-		<img src="/images/recursive-rects/recursive-rects-09.png" title="Recursive Rects #09">
-	</div>
-</section> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root {
+      --bg-color: #000000;
+      --text-color: #ffffff; /* Bright neon green text */
+      --ui-bg: #000000;
+      --ui-border: #ffffff; /* Neon green borders */
+      --accent-color: #ff00ff; /* Magenta for extra accents */
+      --shadow-color: rgba(0, 255, 0, 0.2);
+      --glow-color: rgba(0, 255, 0, 0.8);
+  }
+
+    [data-theme="light"] {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --ui-bg: #f0f0f0;
+        --ui-border: #dddddd;
+    }
+
+    [data-theme="green"] {
+        --bg-color: #000000;
+        --text-color: #00ff00;
+        --ui-bg: #000000;
+        --ui-border: #00ff00;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+
+    .fas {
+        color: var(--text-color);
+    }
+
+    .btn {
+      width: 100%;
+      font-family: 'Courier New', monospace;
+      line-height: 20px;
+        border: 1px solid var(--ui-border);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    .slider {
+      width: 100%;
+      font-family: 'Courier New', monospace;
+      line-height: 20px;
+        border: 1px solid var(--ui-border);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    .btn:active {
+        color: var(--bg-color);
+        background-color: var(--text-color);
+    }
+
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      width: 25px; /* Set a specific slider handle width */
+      height: 25px; /* Slider handle height */
+      background: var(--text-color); /* Green background */
+      cursor: pointer; /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px; /* Set a specific slider handle width */
+      height: 25px; /* Slider handle height */
+      background: var(--text-color); /* Green background */
+      cursor: pointer; /* Cursor on hover */
+    }
+
+
+    .app-container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .canvas-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--ui-bg);
+        border: 1px solid var(--ui-border);
+    }
+
+    .ui-container {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 300px;
+        background-color: var(--ui-bg);
+        border-left: 1px solid var(--ui-border);
+        transition: transform 0.3s ease;
+        padding: 20px;
+        overflow-y: auto;
+        z-index: 1;
+
+    }
+
+    .ui-container.hidden {
+        transform: translateX(100%);
+    }
+
+    .toggle-ui {
+        position: fixed;
+        opacity: 0.2;
+        right: 310px;
+        top: 10px;
+        background: var(--ui-bg);
+        color: var(--text-color);
+        border: 1px solid var(--ui-border);
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    .toggle-ui.hidden {
+        right: 10px;
+    }
+
+    .theme-toggle {
+        position: fixed;
+        opacity: 0.2;
+        left: 10px;
+        top: 10px;
+        background: var(--ui-bg);
+        border: 1px solid var(--ui-border);
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .toggle-ui:hover, .theme-toggle:hover {
+        opacity: 0.8;
+    }
+
+    textarea, input {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border: 1px solid var(--ui-border);
+        padding: 5px;
+        margin: 5px 0;
+    }
+
+    textarea {
+        border: none; 
+/*          border: 1px solid var(--ui-border);*/
+        outline: none; /* Remove the outline on focus */
+        background-color: transparent; /* Make the background transparent */
+        resize: none; /* Prevent resizing */
+        position: absolute;
+        bottom: 25%;
+        left: 0;
+        width: 25%;
+        height: 50%;
+        resize: none;
+        font-size: 50pt;
+        user-select: var(--ui-border); 
+        caret-color: var(--ui-border); /* Neon green caret */
+        animation: blink 1s step-end infinite;
+      }
+
+
+    /* Mobile-friendly styling */
+    @media (max-width: 768px) {
+        textarea {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Full width on mobile */
+            height: 20vh; /* Small height for mobile, adjust as needed */
+            font-size: 4vw; /* Responsive font size based on viewport width */
+            padding: 10px;
+            border: none; 
+        }
+    }
+
+    textarea::selection{
+        color: var(--bg-color);
+        background-color: var(--text-color);
+    }
+
+
+  @keyframes blink {
+      from, to { caret-color: transparent; }
+      50% { caret-color: #00ff00; }
+  }
+</style>
+</head>
+<body>
+<div class="app-container" id="app-container">
+    <div class="canvas-container" id="canvas-container"></div>
+    <div class="ui-container" id="ui-container"></div>
+    <button class="toggle-ui">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+</div>
+
+<script>
+  // List of available colors
+  const c2pHexColors = ['#0A2342', '#CC333F', '#EB6841', '#EDC951', '#00A0B0'];
+
+    // Configuration object to store settings
+    let config = {
+        backgroundColor: "#000000",
+        activeColor: "#00FF00",
+        inactiveColor: "#000000",
+        borderColor: "#000000",
+        textOpacity: 10,
+        canvasWidth: 1080/2,
+        canvasHeight: 1080/2,
+        cellSize: 25,
+        horizontalSpacing: 0,
+        verticalSpacing: 0,
+        text: '',
+        gridPadding: 20
+    };
+
+    // Reference grid for character positions
+    const referenceGrid = {' ': [0, 0],'*': [7, 7],
+        'A': [1, 1], 'B': [1, 2], 'C': [1, 3], 'D': [1, 4], 'E': [1, 5], 'F': [1, 6],
+        'G': [2, 1], 'H': [2, 2], 'I': [2, 3], 'J': [2, 4], 'K': [2, 5], 'L': [2, 6],
+        'M': [3, 1], 'N': [3, 2], 'O': [3, 3], 'P': [3, 4], 'Q': [3, 5], 'R': [3, 6],
+        'S': [4, 1], 'T': [4, 2], 'U': [4, 3], 'V': [4, 4], 'W': [4, 5], 'X': [4, 6],
+        'Y': [5, 1], 'Z': [5, 2], '0': [5, 3], '1': [5, 4], '2': [5, 5], '3': [5, 6],
+        '4': [6, 1], '5': [6, 2], '6': [6, 3], '7': [6, 4], '8': [6, 5], '9': [6, 6]
+    };
+
+    function setup() {
+        const canvas = createCanvas(config.canvasWidth, config.canvasHeight);
+        canvas.parent('canvas-container');
+        pixelDensity(2);
+        
+        // Create UI elements
+        createUI(select('#ui-container'));
+
+
+        // Add a click event listener to the canvas to focus the textarea
+        canvas.mousePressed(() => {
+            const textInput = select('textarea'); // Select the textarea element
+            if (textInput) textInput.elt.focus(); // Focus the textarea if it exists
+        });
+
+        // Add a keydown event listener for Alt+S
+        document.addEventListener('keydown', function (event) {
+          if (event.altKey && event.key === 's') {
+              saveCanvasImage();
+          }
+        });
+
+
+        // Add a keydown event listener for Alt+H
+        document.addEventListener('keydown', function (event) {
+          if (event.altKey && event.key === 'h') {
+              toggle_UI();
+          }
+        });
+    }
+
+    function draw() {
+        background(config.backgroundColor);
+        drawBinaryText();
+    }
+
+    function createUI(container) {
+        // Background color picker
+        createSpan('Background Color: ').parent(container);
+        createElement('br').parent(container);
+        const backgroundColorPicker = createColorPicker(config.backgroundColor);
+        backgroundColorPicker.parent(container);
+        backgroundColorPicker.style("width",'100%')
+        backgroundColorPicker.input(() => config.backgroundColor = backgroundColorPicker.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+        // Active color picker
+        createSpan('Active Color: ').parent(container);
+        createElement('br').parent(container);
+        const activeColorPicker = createColorPicker(config.activeColor);
+        activeColorPicker.parent(container);
+        activeColorPicker.style("width",'100%')
+        activeColorPicker.input(() => config.activeColor = activeColorPicker.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+        // Inactive color picker
+        createSpan('Inactive Color: ').parent(container);
+        createElement('br').parent(container);
+        const inactiveColorPicker = createColorPicker(config.inactiveColor);
+        inactiveColorPicker.parent(container);
+        inactiveColorPicker.style("width",'100%')
+        inactiveColorPicker.input(() => config.inactiveColor = inactiveColorPicker.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+        // Border color picker
+        createSpan('Border Color: ').parent(container);
+        createElement('br').parent(container);
+        const borderColorPicker = createColorPicker(config.borderColor);
+        borderColorPicker.parent(container);
+        borderColorPicker.style("width",'100%')
+        borderColorPicker.input(() => config.borderColor = borderColorPicker.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+        // Create the "Randomize Colors" button
+        const randomizeColorsButton = createButton('RANDOM C2P COLORS');
+        randomizeColorsButton.parent(container); // Add to the UI container
+        randomizeColorsButton.class("btn");
+        randomizeColorsButton.mousePressed(randomizeColors);
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+
+        // Create the "Reset Colors" button
+        const resetColorsButton = createButton('Reset Colors');
+        resetColorsButton.parent(container); // Add to the UI container
+        resetColorsButton.class("btn");
+        resetColorsButton.mousePressed(resetColors);
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+
+          // Text Opacity slider
+        const textOpacityLabel = createSpan('Text Opacity:');
+        textOpacityLabel.parent(container);
+        createElement('br').parent(container);
+        const textOpacitySlider = createSlider(0, 255, config.cellSize, 5);
+        textOpacitySlider.class("slider");
+        textOpacitySlider.style("width",'100%')
+        textOpacitySlider.parent(container);
+        textOpacitySlider.input(() => config.textOpacity = textOpacitySlider.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+
+    // Aspect ratio selector
+    const aspectRatioLabel = createSpan('Canvas Ratio:');
+    aspectRatioLabel.parent(container);
+        createElement('br').parent(container);
+    const aspectRatioSelect = createSelect();
+        aspectRatioSelect.class("btn");
+      aspectRatioSelect.style("width",'100%')
+    aspectRatioSelect.parent(container);
+    aspectRatioSelect.option('1:1', '1:1');
+    aspectRatioSelect.option('16:9', '16:9');
+    aspectRatioSelect.option('9:16', '9:16');
+    aspectRatioSelect.changed(() => updateCanvasRatio(aspectRatioSelect.value()));
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+      // Horizontal spacing slider
+      const hSpacingLabel = createSpan('Horizontal Spacing:');
+      hSpacingLabel.parent(container);
+        createElement('br').parent(container);
+      const hSpacingSlider = createSlider(0, 50, config.horizontalSpacing, 1);
+      hSpacingSlider.class("slider");
+      hSpacingSlider.style("width",'100%')
+      hSpacingSlider.parent(container);
+      hSpacingSlider.input(() => config.horizontalSpacing = hSpacingSlider.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+      // Vertical spacing slider
+      const vSpacingLabel = createSpan('Vertical Spacing:');
+      vSpacingLabel.parent(container);
+        createElement('br').parent(container);
+      const vSpacingSlider = createSlider(0, 50, config.verticalSpacing, 1);
+      vSpacingSlider.class("slider");
+      vSpacingSlider.style("width",'100%')
+      vSpacingSlider.parent(container);
+      vSpacingSlider.input(() => config.verticalSpacing = vSpacingSlider.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+      // Cell size slider
+    const cellSizeLabel = createSpan('Cell Size:');
+    cellSizeLabel.parent(container);
+        createElement('br').parent(container);
+    const cellSizeSlider = createSlider(5, 100, config.cellSize, 1);
+    cellSizeSlider.class("slider");
+    cellSizeSlider.style("width",'100%')
+    cellSizeSlider.parent(container);
+    cellSizeSlider.input(() => config.cellSize = cellSizeSlider.value());
+
+
+        // Text input
+        // createSpan('Text Input: ').parent(container);
+        const textInput = createElement('textarea');
+        textInput.style('padding', '10px');
+        textInput.style('grid-column', 'span 2');
+        textInput.style('overflow', 'hidden'); // Prevent scrolling
+        textInput.attribute('placeholder', 'Enter your text here...'); // Set placeholder text
+        textInput.parent(select('#app-container'));
+        textInput.input(() => {
+        config.text = textInput.value().toUpperCase();
+        resizeText();
+    });
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+    // Set the extracted text as the initial value in the textarea
+    const initialText = getTextFromURL();
+    textInput.value(initialText); // Set initial text in the textarea
+    config.text = initialText.toUpperCase(); // Update config with initial text
+
+    // Function to resize text based on textarea size
+    function resizeText() {
+        const maxFontSize = 100; // Set an upper limit for font size
+        let fontSize = maxFontSize;
+
+        // Decrease font size until text fits within the textarea
+        textInput.style('font-size', `${fontSize}px`);
+        while (textInput.elt.scrollHeight > textInput.elt.clientHeight || textInput.elt.scrollWidth > textInput.elt.clientWidth) {
+            fontSize -= 1;
+            textInput.style('font-size', `${fontSize}px`);
+        }
+    }
+
+        // setInterval(() => textInput.elt.focus(), 2500);
+
+        // Save button
+        const saveButton = createButton('Save Image');
+        saveButton.parent(container);
+        saveButton.style("height","10%");
+        saveButton.style("font-size","x-large");
+        saveButton.class("btn");
+        saveButton.mousePressed(() => {
+          saveCanvasImage();
+        });
+    }
+
+  // Function to toggle UI visibility
+  function toggle_UI() {
+      let tu = document.querySelector('.toggle-ui');
+      tu.click();
+  }
+
+  // Function to save the canvas as an image
+  function saveCanvasImage() {
+      saveCanvas('c2p-cryptotext-'+config.text, 'png'); // Saves the canvas as "canvas-image.png"
+  }
+
+
+  function drawBinaryText() {
+      const chars = config.text
+          .normalize("NFD") // Decompose accented characters
+          .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
+          .split('')
+          .map(char => /[a-zA-Z0-9 ]/.test(char) ? char : '*'); // Replace unsupported characters with "*"
+
+      const gridWidth = config.cellSize * 3; // Width of each character grid (3 cells wide)
+      const gridHeight = config.cellSize * 2; // Height of each character grid (2 cells tall)
+
+      // Calculate the number of character grids that fit per row based on canvas width and horizontal spacing
+      const maxCharsPerRow = floor((config.canvasWidth - config.gridPadding * 2) / (gridWidth + config.horizontalSpacing));
+      
+      // Calculate total width and height of the entire text grid to center it
+      const rows = ceil(chars.length / maxCharsPerRow); // Total rows needed
+      const totalTextWidth = min(chars.length, maxCharsPerRow) * (gridWidth + config.horizontalSpacing) - config.horizontalSpacing;
+      const totalTextHeight = rows * (gridHeight + config.verticalSpacing) - config.verticalSpacing;
+
+      // Center starting position
+      let startX = (config.canvasWidth - totalTextWidth) / 2;
+      let startY = (config.canvasHeight - totalTextHeight) / 2;
+
+      let currentX = startX;
+      let currentY = startY;
+      let charCount = 0;
+
+      for (let char of chars) {
+          if (referenceGrid[char]) {
+              if (charCount > 0 && charCount % maxCharsPerRow === 0) {
+                  currentX = startX; // Reset X position for new row
+                  currentY += gridHeight + config.verticalSpacing; // Move Y position for new row
+              }
+
+              drawCharacterGrid(char, currentX, currentY);
+
+              currentX += gridWidth + config.horizontalSpacing; // Move X position for next character
+              charCount++;
+          }
+      }
+
+      // Calculate alpha based on time for blinking effect
+      const blinkAlpha = 128 + 127 * sin(millis() / 200); // Range from 0 to 255
+
+      push();
+      let ac = color(config.activeColor);
+      ac.setAlpha(blinkAlpha);
+      fill(ac);
+      noStroke();
+      rect(currentX,currentY,2,config.cellSize*2);
+      pop();
+  }
+
+    function drawCharacterGrid(char, x, y) {
+
+      const [row, col] = referenceGrid[char];
+        
+        const rowBinary = (row).toString(2).padStart(3, '0');
+        const colBinary = (col).toString(2).padStart(3, '0');
+
+        for (let i = 0; i < 2; i++) {
+            for (let j = 0; j < 3; j++) {
+                const binary = i === 0 ? rowBinary : colBinary;
+                push();
+                strokeCap(SQUARE);
+                fill(binary[j] === '1' ? config.activeColor : config.inactiveColor);
+                stroke(config.borderColor);
+                rect(x + j * config.cellSize, y + i * config.cellSize, 
+                     config.cellSize, config.cellSize);
+                pop();
+            }
+        }
+
+
+
+      push();
+      textFont('Courier');
+      textAlign(CENTER,CENTER);
+      let text_color = color(config.activeColor);
+      text_color.setAlpha(config.textOpacity);
+      fill(text_color);
+      let text_border_color = color(config.borderColor);
+      text_border_color.setAlpha(config.textOpacity);
+      stroke(text_border_color);
+      textSize(config.cellSize*1.75)
+    text(char,x + config.cellSize*1.5, y + config.cellSize*1);
+    pop();
+
+    }
+
+    // UI Toggle functionality
+    const toggleUI = document.querySelector('.toggle-ui');
+    const uiContainer = document.querySelector('.ui-container');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+
+    uiContainer.classList.toggle('hidden');
+    toggleUI.classList.toggle('hidden');
+    
+    toggleUI.addEventListener('click', () => {
+        uiContainer.classList.toggle('hidden');
+        toggleUI.classList.toggle('hidden');
+        const icon = toggleUI.querySelector('i');
+        icon.classList.toggle('fa-chevron-left');
+        icon.classList.toggle('fa-chevron-right');
+    });
+
+    themeToggle.addEventListener('click', () => {
+        document.body.getAttribute('data-theme') === 'green'
+            ? document.body.removeAttribute('data-theme')
+            : document.body.setAttribute('data-theme', 'green');
+        
+        themeIcon.classList.toggle('fa-sun');
+        themeIcon.classList.toggle('fa-moon');
+    });
+
+
+  // Function to update canvas size based on selected ratio
+  function updateCanvasRatio(ratio) {
+      let width, height;
+      switch (ratio) {
+          case '1:1':
+              width = 1080/2;
+              height = 1080/2;
+              break;
+          case '16:9':
+              width = 1920/2;
+              height = 1080/2;
+              break;
+          case '9:16':
+              width = 1080/2;
+              height = 1920/2;
+              break;
+      }
+      config.canvasWidth = width;
+      config.canvasHeight = height;
+      resizeCanvas(config.canvasWidth, config.canvasHeight);
+  }
+
+    // Function to get the "text" parameter from the current URL
+  function getTextFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('text') || ''; // Get the "text" parameter or an empty string if not found
+  }
+
+
+  // Function to assign a random color from the list to each color property
+  function randomizeColors() {
+      config.backgroundColor = getRandomColor();
+      config.activeColor = getRandomColor();
+      config.inactiveColor = getRandomColor();
+      config.inactiveColor = (config.activeColor==config.inactiveColor)?getRandomColor():config.inactiveColor;
+      config.borderColor = getRandomColor();
+
+      // Trigger a redraw if needed to apply color changes
+      redraw();
+  }
+
+  // Helper function to pick a random color from `c2pHexColors`
+  function getRandomColor() {
+      const randomIndex = Math.floor(Math.random() * c2pHexColors.length);
+      return c2pHexColors[randomIndex];
+  }
+
+  // Function to assign a random color from the list to each color property
+  function resetColors() {
+        config.backgroundColor= "#000000";
+        config.activeColor= "#00FF00";
+        config.inactiveColor= "#000000";
+        config.borderColor= "#000000";
+      
+      // Trigger a redraw if needed to apply color changes
+      redraw();
+  }
+
+</script>
+
+
