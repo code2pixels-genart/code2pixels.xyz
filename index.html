@@ -648,26 +648,20 @@ tags:
     function saveCanvasImage() {
       saveCanvas('c2p-cryptotext-'+config.text, 'png'); // Saves the canvas as "canvas-image.png"
     }
-    
+
     function drawBinaryText() {
-        // Split text into lines, handling both line breaks and individual characters
         const lines = config.text
-            .normalize("NFD") // Decompose accented characters
-            .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
             .split('\n'); // Split text into lines by line breaks
 
-        const gridWidth = config.cellSize * 3; // Width of each character grid (3 cells wide)
-        const gridHeight = config.cellSize * 2; // Height of each character grid (2 cells tall)
+        const gridWidth = config.cellSize * 3;
+        const gridHeight = config.cellSize * 2;
 
-        // Choose maxCharsPerRow: user-defined or auto-calculated
         const maxCharsPerRow = config.userMaxCharsPerRow > 0
             ? config.userMaxCharsPerRow
             : floor((config.canvasWidth - config.gridPadding * 2) / (gridWidth + config.horizontalSpacing));
 
-        // Calculate the number of rows needed, accounting for line breaks and character wrapping
         let totalRows = 0;
         for (let line of lines) {
-            // For each line, count the rows required to fit all characters, or 1 row for an empty line
             totalRows += Math.max(1, ceil(line.length / maxCharsPerRow));
         }
 
@@ -684,45 +678,44 @@ tags:
         let currentX = startX;
 
         for (let line of lines) {
-            const chars = line.split('').map(char => /[a-zA-Z0-9 ]/.test(char) ? char : '*'); // Replace unsupported chars
-
-            currentX = startX; // Reset X position at the start of each line
+            currentX = startX;
             let charCount = 0;
 
-            for (let char of chars) {
+            for (let originalChar of line) {
+                // Normalize for referenceGrid lookup but retain originalChar for display
+                const normalizedChar = originalChar.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const char = /[a-zA-Z0-9 ]/.test(normalizedChar) ? normalizedChar : '*';
+
                 if (referenceGrid[char]) {
                     if (charCount > 0 && charCount % maxCharsPerRow === 0) {
-                        currentX = startX; // Reset X position for a new row within the line
-                        currentY += gridHeight + config.verticalSpacing; // Move Y position for a new row
+                        currentX = startX;
+                        currentY += gridHeight + config.verticalSpacing;
                     }
 
-                    drawCharacterGrid(char, currentX, currentY);
-                    currentX += gridWidth + config.horizontalSpacing; // Move X position for the next character
+                    drawCharacterGrid(char, originalChar, currentX, currentY); // Pass char for grid, originalChar for display
+                    currentX += gridWidth + config.horizontalSpacing;
                     charCount++;
                 }
             }
-            // Move Y to the next line’s position, accounting for line breaks or row wrapping
             currentY += gridHeight + config.verticalSpacing;
         }
 
-        // Position the blinking cursor at the end of the last character drawn
-        const blinkAlpha = 128 + 127 * sin(millis() / 200); // Range from 0 to 255
+        const blinkAlpha = 128 + 127 * sin(millis() / 200);
         push();
         let ac = color(config.activeColor);
         ac.setAlpha(blinkAlpha);
         fill(ac);
         noStroke();
-        rect(currentX, currentY - (gridHeight + config.verticalSpacing), 2, config.cellSize * 2); // Adjust Y for the last line
+        rect(currentX, currentY - (gridHeight + config.verticalSpacing), 2, config.cellSize * 2);
         pop();
     }
 
 
-    function drawCharacterGrid(char, x, y) {
 
-      const [row, col] = referenceGrid[char];
-        
-        const rowBinary = (row).toString(2).padStart(3, '0');
-        const colBinary = (col).toString(2).padStart(3, '0');
+    function drawCharacterGrid(char, displayChar, x, y) {
+        const [row, col] = referenceGrid[char];
+        const rowBinary = row.toString(2).padStart(3, '0');
+        const colBinary = col.toString(2).padStart(3, '0');
 
         for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 3; j++) {
@@ -737,22 +730,21 @@ tags:
             }
         }
 
-
-        // Draw letter over binary 3x2 grid
+        // Draw displayChar (original character) over binary 3x2 grid
         push();
         textFont('Courier');
-        textAlign(CENTER,CENTER);
+        textAlign(CENTER, CENTER);
         let text_color = color(config.activeColor);
         text_color.setAlpha(config.textOpacity);
         fill(text_color);
         let text_border_color = color(config.borderColor);
         text_border_color.setAlpha(config.textOpacity);
         stroke(text_border_color);
-        textSize(config.cellSize*1.75)
-        text(char,x + config.cellSize*1.5, y + config.cellSize*1);
+        textSize(config.cellSize * 1.75);
+        text(displayChar, x + config.cellSize * 1.5, y + config.cellSize);
         pop();
-
     }
+
 
     // UI Toggle functionality
     const toggleUI = document.querySelector('.toggle-ui');
