@@ -648,62 +648,74 @@ tags:
     function saveCanvasImage() {
       saveCanvas('c2p-cryptotext-'+config.text, 'png'); // Saves the canvas as "canvas-image.png"
     }
-
-
+    
     function drawBinaryText() {
-        const chars = config.text
-          .normalize("NFD") // Decompose accented characters
-          .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
-          .split('')
-          .map(char => /[a-zA-Z0-9 ]/.test(char) ? char : '*'); // Replace unsupported characters with "*"
+        // Split text into lines, handling both line breaks and individual characters
+        const lines = config.text
+            .normalize("NFD") // Decompose accented characters
+            .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
+            .split('\n'); // Split text into lines by line breaks
 
         const gridWidth = config.cellSize * 3; // Width of each character grid (3 cells wide)
         const gridHeight = config.cellSize * 2; // Height of each character grid (2 cells tall)
-
 
         // Choose maxCharsPerRow: user-defined or auto-calculated
         const maxCharsPerRow = config.userMaxCharsPerRow > 0
             ? config.userMaxCharsPerRow
             : floor((config.canvasWidth - config.gridPadding * 2) / (gridWidth + config.horizontalSpacing));
 
-        // Calculate total width and height of the entire text grid to center it
-        const rows = ceil(chars.length / maxCharsPerRow); // Total rows needed
-        const totalTextWidth = min(chars.length, maxCharsPerRow) * (gridWidth + config.horizontalSpacing) - config.horizontalSpacing;
-        const totalTextHeight = rows * (gridHeight + config.verticalSpacing) - config.verticalSpacing;
-
-        // Center starting position
-        let startX = (config.canvasWidth - totalTextWidth) / 2;
-        let startY = (config.canvasHeight - totalTextHeight) / 2;
-
-        let currentX = startX;
-        let currentY = startY;
-        let charCount = 0;
-
-        for (let char of chars) {
-          if (referenceGrid[char]) {
-              if (charCount > 0 && charCount % maxCharsPerRow === 0) {
-                  currentX = startX; // Reset X position for new row
-                  currentY += gridHeight + config.verticalSpacing; // Move Y position for new row
-              }
-
-              drawCharacterGrid(char, currentX, currentY);
-
-              currentX += gridWidth + config.horizontalSpacing; // Move X position for next character
-              charCount++;
-          }
+        // Calculate the number of rows needed, accounting for line breaks and character wrapping
+        let totalRows = 0;
+        for (let line of lines) {
+            // For each line, count the rows required to fit all characters, or 1 row for an empty line
+            totalRows += Math.max(1, ceil(line.length / maxCharsPerRow));
         }
 
-        // Calculate alpha based on time for blinking effect
-        const blinkAlpha = 128 + 127 * sin(millis() / 200); // Range from 0 to 255
+        // Calculate total height of all rows for vertical centering
+        const totalTextHeight = totalRows * (gridHeight + config.verticalSpacing) - config.verticalSpacing;
+        const startY = (config.canvasHeight - totalTextHeight) / 2;
 
+        // Center horizontally based on the widest line or maxCharsPerRow
+        const maxLineLength = Math.max(...lines.map(line => Math.min(line.length, maxCharsPerRow)));
+        const totalTextWidth = maxLineLength * (gridWidth + config.horizontalSpacing) - config.horizontalSpacing;
+        const startX = (config.canvasWidth - totalTextWidth) / 2;
+
+        let currentY = startY;
+        let currentX = startX;
+
+        for (let line of lines) {
+            const chars = line.split('').map(char => /[a-zA-Z0-9 ]/.test(char) ? char : '*'); // Replace unsupported chars
+
+            currentX = startX; // Reset X position at the start of each line
+            let charCount = 0;
+
+            for (let char of chars) {
+                if (referenceGrid[char]) {
+                    if (charCount > 0 && charCount % maxCharsPerRow === 0) {
+                        currentX = startX; // Reset X position for a new row within the line
+                        currentY += gridHeight + config.verticalSpacing; // Move Y position for a new row
+                    }
+
+                    drawCharacterGrid(char, currentX, currentY);
+                    currentX += gridWidth + config.horizontalSpacing; // Move X position for the next character
+                    charCount++;
+                }
+            }
+            // Move Y to the next line’s position, accounting for line breaks or row wrapping
+            currentY += gridHeight + config.verticalSpacing;
+        }
+
+        // Position the blinking cursor at the end of the last character drawn
+        const blinkAlpha = 128 + 127 * sin(millis() / 200); // Range from 0 to 255
         push();
         let ac = color(config.activeColor);
         ac.setAlpha(blinkAlpha);
         fill(ac);
         noStroke();
-        rect(currentX,currentY,2,config.cellSize*2);
+        rect(currentX, currentY - (gridHeight + config.verticalSpacing), 2, config.cellSize * 2); // Adjust Y for the last line
         pop();
     }
+
 
     function drawCharacterGrid(char, x, y) {
 
