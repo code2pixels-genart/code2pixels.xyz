@@ -359,6 +359,9 @@ tags:
     // List of available colors
     const c2pHexColors = ['#0A2342', '#CC333F', '#EB6841', '#EDC951', '#00A0B0'];
 
+    let nowModeActive = false; // Flag to track if "NOW" mode is active
+    let nowInterval; // Interval to update the time every second
+
     // Configuration object to store settings
     let config = {
         backgroundColor: "#000000",
@@ -425,6 +428,20 @@ tags:
     }
 
     function createUI(container) {
+
+
+        // Toggle "NOW" Mode Button
+        const nowToggleButton = createButton('NOW');
+        nowToggleButton.parent(container);
+        nowToggleButton.style("height","10%");
+        nowToggleButton.style("font-size","x-large");
+        nowToggleButton.class("btn");
+        nowToggleButton.mousePressed(toggleNowMode);
+
+        createElement('br').parent(container);
+        createElement('br').parent(container);
+
+
         // Background color picker
         createSpan('Background Color').parent(container);
         createElement('br').parent(container);
@@ -855,6 +872,64 @@ tags:
       // Trigger a redraw if needed to apply color changes
       redraw();
     }
+
+    // Function to toggle "NOW" mode
+    function toggleNowMode() {
+        nowModeActive = !nowModeActive; // Toggle the "NOW" mode state
+
+        const nowToggleButton = select('button'); // Select the toggle button
+
+        if (nowModeActive) {
+            // Start updating the time every second
+            nowInterval = setInterval(updateTimeInTextarea, 1000);
+
+            // Update button to indicate "NOW" mode is active
+            // nowToggleButton.html('NOW Mode: ON');
+            nowToggleButton.style('background-color', 'var(--text-color)'); // Background color from --text-color
+            nowToggleButton.style('color', 'var(--bg-color)'); // Text color from --bg-color
+        } else {
+            // Stop updating the time
+            clearInterval(nowInterval);
+            nowInterval = null;
+
+            // Update button to indicate "NOW" mode is inactive
+            // nowToggleButton.html('NOW Mode: OFF');
+            nowToggleButton.style('background-color', 'var(--bg-color)'); // Background color from --bg-color
+            nowToggleButton.style('color', 'var(--text-color)'); // Text color from --text-color
+        }
+    }
+
+
+
+    // Function to update the textarea with the current date and time
+    function updateTimeInTextarea() {
+        const currentDateTime = new Date();
+
+        // Format the date as YYYYMMDD
+        const year = currentDateTime.getFullYear();
+        const month = String(currentDateTime.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        const day = String(currentDateTime.getDate()).padStart(2, '0');
+        const formattedDate = `${year}${month}${day}`;
+
+        // Format the time as HHMMSSAM/PM
+        let hours = currentDateTime.getHours();
+        const minutes = String(currentDateTime.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDateTime.getSeconds()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12; // Convert to 12-hour format and handle midnight (0 should be 12)
+        const formattedTime = `${String(hours).padStart(2, '0')}${minutes}${seconds}${ampm}`;
+
+        // Combine date and time
+        const formattedDateTime = `${formattedDate}\n${formattedTime}`;
+
+        // Update the textarea with the formatted date and time
+        const textInput = select('textarea'); // Select the textarea element
+        if (textInput) {
+            textInput.value(formattedDateTime); // Update textarea with the formatted date and time
+            config.text = formattedDateTime; // Update config text to keep it in sync
+        }
+    }
+
 
 
 
