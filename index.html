@@ -937,13 +937,12 @@ tags:
         // Update the textarea
         const textInput = select('textarea');
         if (textInput) {
-            // If "HERE" mode data is present, replace only the time portion
+            // Check if "HERE" data exists (indicated by N/S/W/E) and only update the time portion
             if (hereModeActive && /[NSWE]/.test(textInput.value())) {
-                const existingText = textInput.value();
-                const locationData = existingText.split('\n\n')[0]; // Extract location data only
-                textInput.value(`${locationData}\n\n${formattedDateTime}`);
+                const locationData = textInput.value().split('\n\n')[0]; // Extract only the location data
+                textInput.value(`${locationData}\n\n${formattedDateTime}`); // Update with location + updated time
             } else {
-                textInput.value(formattedDateTime); // Otherwise, just set the date and time
+                textInput.value(formattedDateTime); // Set initial time if location data isn't present
             }
             config.text = textInput.value(); // Update config text to keep it in sync
         }
