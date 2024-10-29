@@ -504,9 +504,15 @@ tags:
         aspectRatioSelect.class("btn");
         aspectRatioSelect.style("width",'100%')
         aspectRatioSelect.parent(container);
-        aspectRatioSelect.option('1:1', '1:1');
-        aspectRatioSelect.option('16:9', '16:9');
-        aspectRatioSelect.option('9:16', '9:16');
+        aspectRatioSelect.option('1:1', '1:1');       // Square
+        aspectRatioSelect.option('16:9', '16:9');     // Widescreen
+        aspectRatioSelect.option('9:16', '9:16');     // Vertical
+        aspectRatioSelect.option('4:3', '4:3');       // Standard Digital
+        aspectRatioSelect.option('3:2', '3:2');       // DSLR/35mm Film
+        aspectRatioSelect.option('A4', 'A4');         // International Paper (A4)
+        aspectRatioSelect.option('A3', 'A3');         // International Paper (A3)
+        aspectRatioSelect.option('5:7', '5:7');       // Standard Photo
+        aspectRatioSelect.option('11:14', '11:14');   // Medium Print Size
         aspectRatioSelect.changed(() => updateCanvasRatio(aspectRatioSelect.value()));
         createElement('br').parent(container);
         createElement('br').parent(container);
@@ -765,25 +771,50 @@ tags:
 
     // Function to update canvas size based on selected ratio
     function updateCanvasRatio(ratio) {
-      let width, height;
-      switch (ratio) {
-          case '1:1':
-              width = 1080/2;
-              height = 1080/2;
-              break;
-          case '16:9':
-              width = 1920/2;
-              height = 1080/2;
-              break;
-          case '9:16':
-              width = 1080/2;
-              height = 1920/2;
-              break;
-      }
-      config.canvasWidth = width;
-      config.canvasHeight = height;
-      resizeCanvas(config.canvasWidth, config.canvasHeight);
+        let width, height;
+        switch (ratio) {
+            case '1:1':
+                width = 1080 / 2;
+                height = 1080 / 2;
+                break;
+            case '16:9':
+                width = 1920 / 2;
+                height = 1080 / 2;
+                break;
+            case '9:16':
+                width = 1080 / 2;
+                height = 1920 / 2;
+                break;
+            case '4:3':
+                width = 1200 / 2;
+                height = 900 / 2;
+                break;
+            case '3:2':
+                width = 1500 / 2;
+                height = 1000 / 2;
+                break;
+            case 'A4':
+                width = 2100 / 2;
+                height = 2970 / 2;
+                break;
+            case 'A3':
+                width = 2970 / 2;
+                height = 4200 / 2;
+                break;
+            case '5:7':
+                width = 500;
+                height = 700;
+                break;
+            case '11:14':
+                width = 1100;
+                height = 1400;
+                break;
+        }
+        config.canvasWidth = width;
+        config.canvasHeight = height;
+        resizeCanvas(config.canvasWidth, config.canvasHeight);
     }
+
 
     // Function to get the "text" parameter from the current URL
     function getTextFromURL() {
