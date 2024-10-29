@@ -28,7 +28,7 @@ tags:
     :root {
       --bg-color: #000000;
       --text-color: #ffffff; /* Bright neon green text */
-      --ui-bg: #000000;
+      --ui-bg: #000000cc;
       --ui-border: #ffffff; /* Neon green borders */
       --shadow-color: rgba(0, 255, 0, 0.2);
       --glow-color: rgba(0, 255, 0, 0.8);
@@ -59,6 +59,10 @@ tags:
         background-color: var(--bg-color);
         color: var(--text-color);
         transition: all 0.3s ease;
+    }
+
+    span {
+        background-color: var(--bg-color);        
     }
 
     .fas {
@@ -110,24 +114,38 @@ tags:
     .app-container {
         width: 100vw;
         height: 100vh;
-        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
     }
 
     .canvas-container {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        background-color: var(--ui-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        max-height: 100%;
+        padding: 10px; /* Optional padding */
+        box-sizing: border-box;
         border: 1px solid var(--ui-border);
     }
+
+    /* Responsive canvas that keeps its aspect ratio */
+    .p5Canvas {
+        width: 100% !important;            /* Full width inside container */
+        height: auto !important; /* Maintains aspect ratio */
+        max-width: 80vw;       /* Limits width to viewport width */
+        max-height: 80vh;      /* Limits height to viewport height */
+        object-fit: contain;    /* Ensures it fits within bounds without stretching */
+    }
+
 
     .ui-container {
         position: fixed;
         right: 0;
         top: 0;
-        height: 80vh;
+        height: 100vh;
         width: 300px;
         background-color: var(--ui-bg);
         border-left: 1px solid var(--ui-border);
@@ -135,6 +153,7 @@ tags:
         padding: 20px;
         overflow-y: auto;
         z-index: 1;
+        padding-bottom: 20vh;
 
     }
 
@@ -228,13 +247,13 @@ tags:
         /* Mobile-friendly styling */
         @media (max-width: 768px) {
             textarea {
-                background-color:  var(--bg-color);;
+                background-color: var(--ui-bg);
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 width: 100%; /* Full width on mobile */
                 height: 20vh; /* Small height for mobile, adjust as needed */
-                font-size: 4vw; /* Responsive font size based on viewport width */
+                font-size: 8vw; /* Responsive font size based on viewport width */
                 padding: 10px;
                 border: none; 
             }
@@ -290,6 +309,7 @@ tags:
     .qr-code-container > canvas {
         width: 90%;
     }
+
 
 
 </style>
@@ -406,7 +426,7 @@ tags:
 
     function createUI(container) {
         // Background color picker
-        createSpan('Background Color: ').parent(container);
+        createSpan('Background Color').parent(container);
         createElement('br').parent(container);
         const backgroundColorPicker = createColorPicker(config.backgroundColor);
         backgroundColorPicker.parent(container);
@@ -416,7 +436,7 @@ tags:
         createElement('br').parent(container);
 
         // Active color picker
-        createSpan('Active Color: ').parent(container);
+        createSpan('Active Color').parent(container);
         createElement('br').parent(container);
         const activeColorPicker = createColorPicker(config.activeColor);
         activeColorPicker.parent(container);
@@ -426,7 +446,7 @@ tags:
         createElement('br').parent(container);
 
         // Inactive color picker
-        createSpan('Inactive Color: ').parent(container);
+        createSpan('Inactive Color').parent(container);
         createElement('br').parent(container);
         const inactiveColorPicker = createColorPicker(config.inactiveColor);
         inactiveColorPicker.parent(container);
@@ -436,7 +456,7 @@ tags:
         createElement('br').parent(container);
 
         // Border color picker
-        createSpan('Border Color: ').parent(container);
+        createSpan('Border Color').parent(container);
         createElement('br').parent(container);
         const borderColorPicker = createColorPicker(config.borderColor);
         borderColorPicker.parent(container);
@@ -464,7 +484,7 @@ tags:
 
 
           // Text Opacity slider
-        const textOpacityLabel = createSpan('Text Opacity:');
+        const textOpacityLabel = createSpan('Text Opacity');
         textOpacityLabel.parent(container);
         createElement('br').parent(container);
         const textOpacitySlider = createSlider(0, 255, config.cellSize, 5);
@@ -477,7 +497,7 @@ tags:
 
 
         // Aspect ratio selector
-        const aspectRatioLabel = createSpan('Canvas Ratio:');
+        const aspectRatioLabel = createSpan('Canvas Ratio');
         aspectRatioLabel.parent(container);
         createElement('br').parent(container);
         const aspectRatioSelect = createSelect();
@@ -492,7 +512,7 @@ tags:
         createElement('br').parent(container);
 
         // Horizontal spacing slider
-        const hSpacingLabel = createSpan('Horizontal Spacing:');
+        const hSpacingLabel = createSpan('Horizontal Spacing');
         hSpacingLabel.parent(container);
         createElement('br').parent(container);
         const hSpacingSlider = createSlider(0, 50, config.horizontalSpacing, 1);
@@ -504,7 +524,7 @@ tags:
         createElement('br').parent(container);
 
         // Vertical spacing slider
-        const vSpacingLabel = createSpan('Vertical Spacing:');
+        const vSpacingLabel = createSpan('Vertical Spacing');
         vSpacingLabel.parent(container);
         createElement('br').parent(container);
         const vSpacingSlider = createSlider(0, 50, config.verticalSpacing, 1);
@@ -516,7 +536,7 @@ tags:
         createElement('br').parent(container);
 
           // Cell size slider
-        const cellSizeLabel = createSpan('Cell Size:');
+        const cellSizeLabel = createSpan('Cell Size');
         cellSizeLabel.parent(container);
         createElement('br').parent(container);
         const cellSizeSlider = createSlider(5, 100, config.cellSize, 1);
@@ -775,28 +795,5 @@ tags:
     }
 
 
-    // TODO: WINDOW RESIZE
-    // function windowResized() {
-    //     const margin = 0.35; // Margin to keep around the canvas
-    //     resizeCanvasToAspectRatio(margin);
-    // }
-
-    // function resizeCanvasToAspectRatio(margin) {
-    //     const aspectRatio = config.canvasWidth / config.canvasHeight;
-    //     const availableWidth = windowWidth * (1 - margin);
-    //     const availableHeight = windowHeight * (1 - margin);
-
-    //     if (availableWidth / availableHeight > aspectRatio) {
-    //         // Window is wider than the aspect ratio: set height, calculate width
-    //         config.canvasHeight = availableHeight;
-    //         config.canvasWidth = availableHeight * aspectRatio;
-    //     } else {
-    //         // Window is taller than the aspect ratio: set width, calculate height
-    //         config.canvasWidth = availableWidth;
-    //         config.canvasHeight = availableWidth / aspectRatio;
-    //     }
-
-    //     resizeCanvas(config.canvasWidth, config.canvasHeight);
-    // }
 
 </script>
