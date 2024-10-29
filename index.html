@@ -515,7 +515,7 @@ tags:
         const hSpacingLabel = createSpan('Horizontal Spacing');
         hSpacingLabel.parent(container);
         createElement('br').parent(container);
-        const hSpacingSlider = createSlider(0, 50, config.horizontalSpacing, 1);
+        const hSpacingSlider = createSlider(0, 150, config.horizontalSpacing, 1);
         hSpacingSlider.class("slider");
         hSpacingSlider.style("width",'100%')
         hSpacingSlider.parent(container);
@@ -527,7 +527,7 @@ tags:
         const vSpacingLabel = createSpan('Vertical Spacing');
         vSpacingLabel.parent(container);
         createElement('br').parent(container);
-        const vSpacingSlider = createSlider(0, 50, config.verticalSpacing, 1);
+        const vSpacingSlider = createSlider(0, 150, config.verticalSpacing, 1);
         vSpacingSlider.class("slider");
         vSpacingSlider.style("width",'100%')
         vSpacingSlider.parent(container);
@@ -561,7 +561,6 @@ tags:
         maxCharsSlider.style("width", '100%');
         maxCharsSlider.parent(container);
         
-
         maxCharsSlider.input(() => {
             config.userMaxCharsPerRow = maxCharsSlider.value(); // Store user-defined value in config
             maxCharsValueDisplay.html(` ${maxCharsSlider.value()}`); // Update displayed value
