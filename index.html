@@ -920,7 +920,7 @@ tags:
 
         // Format the date as YYYYMMDD
         const year = currentDateTime.getFullYear();
-        const month = String(currentDateTime.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+        const month = String(currentDateTime.getMonth() + 1).padStart(2, '0');
         const day = String(currentDateTime.getDate()).padStart(2, '0');
         const formattedDate = `${year}${month}${day}`;
 
@@ -932,20 +932,23 @@ tags:
         hours = hours % 12 || 12; // Convert to 12-hour format and handle midnight (0 should be 12)
         const formattedTime = `${String(hours).padStart(2, '0')}${minutes}${seconds}${ampm}`;
 
-        // Combine date and time
         const formattedDateTime = `${formattedDate}\n${formattedTime}`;
 
-        // Update the textarea with the formatted date and time, appending if "HERE" mode is active
-        const textInput = select('textarea'); // Select the textarea element
+        // Update the textarea
+        const textInput = select('textarea');
         if (textInput) {
-            if (hereModeActive && textInput.value().length > 0) {
-                textInput.value(`${textInput.value()}\n\n${formattedDateTime}`);
+            // If "HERE" mode data is present, replace only the time portion
+            if (hereModeActive && /[NSWE]/.test(textInput.value())) {
+                const existingText = textInput.value();
+                const locationData = existingText.split('\n\n')[0]; // Extract location data only
+                textInput.value(`${locationData}\n\n${formattedDateTime}`);
             } else {
-                textInput.value(formattedDateTime);
+                textInput.value(formattedDateTime); // Otherwise, just set the date and time
             }
             config.text = textInput.value(); // Update config text to keep it in sync
         }
     }
+
 
 
 
