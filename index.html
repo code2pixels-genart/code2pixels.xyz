@@ -935,13 +935,18 @@ tags:
         // Combine date and time
         const formattedDateTime = `${formattedDate}\n${formattedTime}`;
 
-        // Update the textarea with the formatted date and time
+        // Update the textarea with the formatted date and time, appending if "HERE" mode is active
         const textInput = select('textarea'); // Select the textarea element
         if (textInput) {
-            textInput.value(formattedDateTime); // Update textarea with the formatted date and time
-            config.text = formattedDateTime; // Update config text to keep it in sync
+            if (hereModeActive && textInput.value().length > 0) {
+                textInput.value(`${textInput.value()}\n\n${formattedDateTime}`);
+            } else {
+                textInput.value(formattedDateTime);
+            }
+            config.text = textInput.value(); // Update config text to keep it in sync
         }
     }
+
 
 
     // Function to toggle "HERE" mode
@@ -949,23 +954,34 @@ tags:
     function toggleHereMode() {
         hereModeActive = !hereModeActive; // Toggle the "HERE" mode state
 
-        const hereToggleButton = select('.here'); // Select the toggle button for "HERE"
+        const hereToggleButton = select('.here'); // Select the toggle button for "HERE" mode
 
         if (hereModeActive) {
-            // Request GPS data with permission prompt
+            // Request GPS data
             requestLocationPermission();
 
             // Update button to indicate "HERE" mode is active
-            hereToggleButton.html('HERE');
+            hereToggleButton.html('HERE Mode: ON');
             hereToggleButton.style('background-color', 'var(--text-color)');
             hereToggleButton.style('color', 'var(--bg-color)');
+
+            // If "NOW" mode is active, ensure it appends the time to the location
+            if (nowModeActive) {
+                updateTimeInTextarea(); // Start updating the time
+            }
         } else {
             // Deactivate "HERE" mode
-            hereToggleButton.html('HERE');
+            hereToggleButton.html('HERE Mode: OFF');
             hereToggleButton.style('background-color', 'var(--bg-color)');
             hereToggleButton.style('color', 'var(--text-color)');
+
+            // Optionally stop updating time if "HERE" is off and you only want updates in "HERE" mode
+            if (nowModeActive) {
+                clearInterval(nowInterval);
+            }
         }
     }
+
 
     // Function to request location permission and handle response
     function requestLocationPermission() {
@@ -980,6 +996,7 @@ tags:
                         alert("Location access denied. Please enable GPS access in browser settings.");
                     } else {
                         alert("Error obtaining location: " + error);
+                        console.log(error)
                     }
                     // Deactivate HERE mode if location is not available
                     hereModeActive = false;
