@@ -544,7 +544,32 @@ tags:
         cellSizeSlider.style("width",'100%')
         cellSizeSlider.parent(container);
         cellSizeSlider.input(() => config.cellSize = cellSizeSlider.value());
+        createElement('br').parent(container);
+        createElement('br').parent(container);
 
+        // Create a span to display the current slider value
+        const maxCharsValueDisplay = createSpan("0");
+        maxCharsValueDisplay.parent(container);
+
+        // Max Characters Per Row Slider
+        const maxCharsLabel = createSpan(' Per Row (0 = Auto)');
+        maxCharsLabel.parent(container);
+        
+
+        const maxCharsSlider = createSlider(0, 20, 0); // Range from 0 to 50, default is 0 for "auto"
+        maxCharsSlider.class("slider");
+        maxCharsSlider.style("width", '100%');
+        maxCharsSlider.parent(container);
+        
+
+        maxCharsSlider.input(() => {
+            config.userMaxCharsPerRow = maxCharsSlider.value(); // Store user-defined value in config
+            maxCharsValueDisplay.html(` ${maxCharsSlider.value()}`); // Update displayed value
+
+        });
+        
+        createElement('br').parent(container);
+        createElement('br').parent(container);
 
         // Text input
         // createSpan('Text Input: ').parent(container);
@@ -621,32 +646,35 @@ tags:
 
 
     function drawBinaryText() {
-      const chars = config.text
+        const chars = config.text
           .normalize("NFD") // Decompose accented characters
           .replace(/[\u0300-\u036f]/g, "") // Remove accent marks
           .split('')
           .map(char => /[a-zA-Z0-9 ]/.test(char) ? char : '*'); // Replace unsupported characters with "*"
 
-      const gridWidth = config.cellSize * 3; // Width of each character grid (3 cells wide)
-      const gridHeight = config.cellSize * 2; // Height of each character grid (2 cells tall)
+        const gridWidth = config.cellSize * 3; // Width of each character grid (3 cells wide)
+        const gridHeight = config.cellSize * 2; // Height of each character grid (2 cells tall)
 
-      // Calculate the number of character grids that fit per row based on canvas width and horizontal spacing
-      const maxCharsPerRow = floor((config.canvasWidth - config.gridPadding * 2) / (gridWidth + config.horizontalSpacing));
-      
-      // Calculate total width and height of the entire text grid to center it
-      const rows = ceil(chars.length / maxCharsPerRow); // Total rows needed
-      const totalTextWidth = min(chars.length, maxCharsPerRow) * (gridWidth + config.horizontalSpacing) - config.horizontalSpacing;
-      const totalTextHeight = rows * (gridHeight + config.verticalSpacing) - config.verticalSpacing;
 
-      // Center starting position
-      let startX = (config.canvasWidth - totalTextWidth) / 2;
-      let startY = (config.canvasHeight - totalTextHeight) / 2;
+        // Choose maxCharsPerRow: user-defined or auto-calculated
+        const maxCharsPerRow = config.userMaxCharsPerRow > 0
+            ? config.userMaxCharsPerRow
+            : floor((config.canvasWidth - config.gridPadding * 2) / (gridWidth + config.horizontalSpacing));
 
-      let currentX = startX;
-      let currentY = startY;
-      let charCount = 0;
+        // Calculate total width and height of the entire text grid to center it
+        const rows = ceil(chars.length / maxCharsPerRow); // Total rows needed
+        const totalTextWidth = min(chars.length, maxCharsPerRow) * (gridWidth + config.horizontalSpacing) - config.horizontalSpacing;
+        const totalTextHeight = rows * (gridHeight + config.verticalSpacing) - config.verticalSpacing;
 
-      for (let char of chars) {
+        // Center starting position
+        let startX = (config.canvasWidth - totalTextWidth) / 2;
+        let startY = (config.canvasHeight - totalTextHeight) / 2;
+
+        let currentX = startX;
+        let currentY = startY;
+        let charCount = 0;
+
+        for (let char of chars) {
           if (referenceGrid[char]) {
               if (charCount > 0 && charCount % maxCharsPerRow === 0) {
                   currentX = startX; // Reset X position for new row
@@ -658,18 +686,18 @@ tags:
               currentX += gridWidth + config.horizontalSpacing; // Move X position for next character
               charCount++;
           }
-      }
+        }
 
-      // Calculate alpha based on time for blinking effect
-      const blinkAlpha = 128 + 127 * sin(millis() / 200); // Range from 0 to 255
+        // Calculate alpha based on time for blinking effect
+        const blinkAlpha = 128 + 127 * sin(millis() / 200); // Range from 0 to 255
 
-      push();
-      let ac = color(config.activeColor);
-      ac.setAlpha(blinkAlpha);
-      fill(ac);
-      noStroke();
-      rect(currentX,currentY,2,config.cellSize*2);
-      pop();
+        push();
+        let ac = color(config.activeColor);
+        ac.setAlpha(blinkAlpha);
+        fill(ac);
+        noStroke();
+        rect(currentX,currentY,2,config.cellSize*2);
+        pop();
     }
 
     function drawCharacterGrid(char, x, y) {
