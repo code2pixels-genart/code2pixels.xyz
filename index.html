@@ -979,7 +979,7 @@ tags:
                     if (error.code === error.PERMISSION_DENIED) {
                         alert("Location access denied. Please enable GPS access in browser settings.");
                     } else {
-                        alert("Error obtaining location: " + error.message);
+                        alert("Error obtaining location: " + error);
                     }
                     // Deactivate HERE mode if location is not available
                     hereModeActive = false;
@@ -994,14 +994,19 @@ tags:
         }
     }
 
-    // Function to convert decimal degrees to DMS format
-    function toDMS(degrees) {
+    // Function to convert decimal degrees to DMS format with proper direction (N/S/E/W)
+    function toDMS(degrees, isLatitude) {
         const d = Math.floor(Math.abs(degrees));
         const minFloat = (Math.abs(degrees) - d) * 60;
         const m = Math.floor(minFloat);
         const s = Math.round((minFloat - m) * 60);
 
-        return `${d}°${m}'${s}" ${degrees >= 0 ? "N" : "S"}`;
+        // Determine direction based on whether it's latitude or longitude
+        const direction = degrees >= 0
+            ? (isLatitude ? "N" : "E")
+            : (isLatitude ? "S" : "W");
+
+        return `${d}°${m}'${s}" ${direction}`;
     }
 
     // Function to update the textarea with the current GPS location in DMS format
@@ -1009,10 +1014,11 @@ tags:
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        const latDMS = toDMS(latitude);
-        const lonDMS = toDMS(longitude);
+        // Pass true for latitude and false for longitude to get correct N/S or E/W
+        const latDMS = toDMS(latitude, true);   // true indicates it's latitude
+        const lonDMS = toDMS(longitude, false); // false indicates it's longitude
 
-        const formattedLocation = `Latitude: ${latDMS}\nLongitude: ${lonDMS}`;
+        const formattedLocation = `${latDMS}\n${lonDMS}`;
 
         // Update the textarea
         const textInput = select('textarea');
@@ -1021,6 +1027,7 @@ tags:
             config.text = formattedLocation; // Update config text to keep it in sync
         }
     }
+
 
     // Handle errors from the Geolocation API
     function handleLocationError(error) {
