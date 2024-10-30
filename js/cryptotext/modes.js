@@ -162,8 +162,3 @@ function handleLocationError(error) {
     console.error("Error obtaining location:", error);
     alert("Unable to retrieve location. Please enable GPS permissions and try again.");
 }
-
-// function randomizeColors() { /* Function for randomizing colors */ }
-// function getRandomColor() { /* Helper function for random colors */ }
-function toDMS(degrees, isLatitude) { /* DMS conversion function */ }
-
