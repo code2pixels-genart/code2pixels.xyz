@@ -25,8 +25,6 @@ themeToggle.addEventListener('click', () => {
 
 
 function createUI(container) {
-
-
     // Toggle "HERE" Mode Button
     const hereToggleButton = createButton('HERE');
     hereToggleButton.parent(container);
@@ -114,6 +112,7 @@ function createUI(container) {
     createElement('br').parent(container);
     const textOpacitySlider = createSlider(0, 255, config.cellSize, 5);
     textOpacitySlider.class("slider");
+    textOpacitySlider.id("textOpacitySlider");
     textOpacitySlider.style("width",'100%')
     textOpacitySlider.parent(container);
     textOpacitySlider.input(() => config.textOpacity = textOpacitySlider.value());
@@ -259,6 +258,44 @@ function createUI(container) {
         qrContainer.style.display = qrContainer.style.display === 'none' ? 'flex' : 'none';
     });
 
+    createElement('br').parent(container);
+    createElement('br').parent(container);
+
+    // Save preset button
+    const savePresetButton = createButton('Save Preset');
+    savePresetButton.parent(container);
+    savePresetButton.style("height","5%");
+    savePresetButton.style("font-size","x-large");
+    savePresetButton.class("btn");
+    savePresetButton.id("savePresetBtn");
+    savePresetButton.mousePressed(() => {
+	    const presetName = prompt("Enter a name for your preset:");
+	    savePreset(presetName);
+	    alert(`Preset "${presetName}" saved!`);
+    });
+
+    createElement('br').parent(container);
+    // Load preset button
+    const loadPresetButton = createButton('Load Preset');
+    loadPresetButton.parent(container);
+    loadPresetButton.style("height","5%");
+    loadPresetButton.style("font-size","x-large");
+    loadPresetButton.class("btn");
+    loadPresetButton.id("loadPresetBtn");
+    loadPresetButton.mousePressed(() => {
+	    const presetName = prompt("Enter the name of the preset to load:");
+	    loadPreset(presetName);
+    });
+    createElement('br').parent(container);
+    createElement('br').parent(container);
+
+    // const presetListContainer = createDiv("Preset List");
+    // presetListContainer.parent(container);
+    // presetListContainer.id("presetListContainer");
+    // presetListContainer.style("height","25%");
+
+
+
 
     updateQRCode("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
 }
@@ -286,3 +323,5 @@ function resizeTextareaFont() {
         }
     }
 }
+
+

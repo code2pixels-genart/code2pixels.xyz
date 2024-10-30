@@ -15,5 +15,5 @@ window.addEventListener("DOMContentLoaded", function () {
 function updateQRCode(text) {
     const qrUrl = `https://cryptotext.code2pixels.xyz?text=${encodeURIComponent(text)}`;
     qr.set({ value: qrUrl }); // Update QR code with the new URL
-    //console.log("Updated QR Code URL:", qrUrl); // Debug line
+    console.log("Updated QR Code URL:", qrUrl); // Debug line
 }

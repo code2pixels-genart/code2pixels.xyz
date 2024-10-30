@@ -22,12 +22,6 @@ function setup() {
     createUI(select('#ui-container'));
 
 
-    // Add a click event listener to the canvas to focus the textarea
-    canvas.mousePressed(() => {
-        const textInput = select('textarea'); // Select the textarea element
-        if (textInput) textInput.elt.focus(); // Focus the textarea if it exists
-    });
-
     // Add a keydown event listener for Alt+S
     document.addEventListener('keydown', function (event) {
       if (event.altKey && event.key === 's') {
@@ -45,6 +39,8 @@ function setup() {
 
 
     // resizeCanvasToContainer(); // Initial resize to fit the container
+    // loadConfigFromURL();
+    
 }
 
 function draw() {
