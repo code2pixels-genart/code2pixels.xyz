@@ -147,7 +147,6 @@ function drawCharacterGrid(char, displayChar, x, y) {
     pop();
 }
 
-
 // Function to save the canvas as an image
 function saveCanvasImage() {
   saveCanvas('c2p-cryptotext-'+config.text, 'png'); // Saves the canvas as "canvas-image.png"

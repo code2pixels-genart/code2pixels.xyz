@@ -35,7 +35,6 @@ function getTextFromURL() {
   return params.get('text') || ''; // Get the "text" parameter or an empty string if not found
 }
 
-
 // Function to convert decimal degrees to DMS format with proper direction (N/S/E/W)
 function toDMS(degrees, isLatitude) {
     const d = Math.floor(Math.abs(degrees));
