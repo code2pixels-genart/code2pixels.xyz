@@ -268,3 +268,21 @@ function toggle_UI() {
   let tu = document.querySelector('.toggle-ui');
   tu.click();
 }
+
+function resizeTextareaFont() {
+    const textInput = select('textarea'); // Select the textarea element
+    const maxFontSize = 50; // Define a max font size
+    const minFontSize = 10; // Define a min font size
+    let fontSize = maxFontSize;
+
+    if (textInput) {
+        textInput.style('font-size', `${fontSize}px`);
+
+        // Reduce the font size until content fits within the textarea
+        while ((textInput.elt.scrollHeight > textInput.elt.clientHeight || 
+                textInput.elt.scrollWidth > textInput.elt.clientWidth) && fontSize > minFontSize) {
+            fontSize -= 1;
+            textInput.style('font-size', `${fontSize}px`);
+        }
+    }
+}

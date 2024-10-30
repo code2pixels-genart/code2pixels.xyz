@@ -131,44 +131,45 @@ textarea, input {
 
 textarea {
     border: none; 
-        outline: none; /* Remove the outline on focus */
-        background-color: transparent; /* Make the background transparent */
-        resize: none; /* Prevent resizing */
-        position: absolute;
-        bottom: 25%;
+    outline: none; /* Remove the outline on focus */
+    background-color: transparent; /* Make the background transparent */
+    resize: none; /* Prevent resizing */
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    width: 25%;
+    height: 50%;
+    resize: none;
+    font-size: 50pt;
+    user-select: var(--ui-border); 
+    caret-color: var(--ui-border); /* Neon green caret */
+    animation: blink 1s step-end infinite;
+    opacity: 0.2;
+}
+
+
+/* Mobile-friendly styling */
+@media (max-width: 768px) {
+    textarea {
+        background-color: var(--ui-bg);
+        position: fixed;
+        bottom: 0;
         left: 0;
-        width: 25%;
-        height: 50%;
-        resize: none;
-        font-size: 50pt;
-        user-select: var(--ui-border); 
-        caret-color: var(--ui-border); /* Neon green caret */
-        animation: blink 1s step-end infinite;
-      }
-
-
-    /* Mobile-friendly styling */
-    @media (max-width: 768px) {
-        textarea {
-            background-color: var(--ui-bg);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%; /* Full width on mobile */
-            height: 20vh; /* Small height for mobile, adjust as needed */
-            font-size: 8vw; /* Responsive font size based on viewport width */
-            padding: 10px;
-            border: none; 
-        }
+        width: 100%; /* Full width on mobile */
+        height: 20vh; /* Small height for mobile, adjust as needed */
+        font-size: 8vw; /* Responsive font size based on viewport width */
+        padding: 10px;
+        border: none; 
     }
+}
 
-    textarea::selection{
-        color: var(--bg-color);
-        background-color: var(--text-color);
-    }
+textarea::selection{
+    color: var(--bg-color);
+    background-color: var(--text-color);
+}
 
 
-  @keyframes blink {
-      from, to { caret-color: transparent; }
-      50% { caret-color: var(--text-color); }
-  }
+@keyframes blink {
+    from, to { caret-color: transparent; }
+    50% { caret-color: var(--text-color); }
+}

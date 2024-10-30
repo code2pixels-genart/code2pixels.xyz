@@ -63,6 +63,8 @@ function updateTimeInTextarea() {
         }
         config.text = textInput.value(); // Update config text to keep it in sync
     }
+
+    resizeTextareaFont();
 }
 
 // Function to toggle "HERE" mode
@@ -156,6 +158,8 @@ function updateLocationInTextarea(position) {
         textInput.value(formattedLocation); // Update textarea with the GPS coordinates
         config.text = formattedLocation; // Update config text to keep it in sync
     }
+    
+    resizeTextareaFont();
 }
 
 // Handle errors from the Geolocation API
