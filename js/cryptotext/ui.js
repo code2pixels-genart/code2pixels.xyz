@@ -146,7 +146,7 @@ function createUI(container) {
     const hSpacingLabel = createSpan('Horizontal Spacing');
     hSpacingLabel.parent(container);
     createElement('br').parent(container);
-    const hSpacingSlider = createSlider(0, 150, config.horizontalSpacing, 1);
+    const hSpacingSlider = createSlider(0, 300, config.horizontalSpacing, 1);
     hSpacingSlider.class("slider");
     hSpacingSlider.style("width",'100%')
     hSpacingSlider.parent(container);
@@ -158,7 +158,7 @@ function createUI(container) {
     const vSpacingLabel = createSpan('Vertical Spacing');
     vSpacingLabel.parent(container);
     createElement('br').parent(container);
-    const vSpacingSlider = createSlider(0, 150, config.verticalSpacing, 1);
+    const vSpacingSlider = createSlider(0, 300, config.verticalSpacing, 1);
     vSpacingSlider.class("slider");
     vSpacingSlider.style("width",'100%')
     vSpacingSlider.parent(container);

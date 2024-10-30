@@ -1,7 +1,3 @@
-// function randomizeColors() { /* Function for randomizing colors */ }
-// function getRandomColor() { /* Helper function for random colors */ }
-function toDMS(degrees, isLatitude) { /* DMS conversion function */ }
-
 
 // Function to assign a random color from the list to each color property
 function randomizeColors() {
@@ -39,3 +35,18 @@ function getTextFromURL() {
   return params.get('text') || ''; // Get the "text" parameter or an empty string if not found
 }
 
+
+// Function to convert decimal degrees to DMS format with proper direction (N/S/E/W)
+function toDMS(degrees, isLatitude) {
+    const d = Math.floor(Math.abs(degrees));
+    const minFloat = (Math.abs(degrees) - d) * 60;
+    const m = Math.floor(minFloat);
+    const s = Math.round((minFloat - m) * 60);
+
+    // Determine direction based on whether it's latitude or longitude
+    const direction = degrees >= 0
+        ? (isLatitude ? "N" : "E")
+        : (isLatitude ? "S" : "W");
+
+    return `${d}°${m}'${s}" ${direction}`;
+}
