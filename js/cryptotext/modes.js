@@ -137,8 +137,8 @@ function toDMS(degrees, isLatitude) {
         ? (isLatitude ? "N" : "E")
         : (isLatitude ? "S" : "W");
 
-    // return `${d}°${m}'${s}" ${direction}`;
-    return `${d}${m}${s}${direction}`;
+    return `${d}°${m}'${s}" ${direction}`;
+    // return `${d}${m}${s}${direction}`;
 }
 
 // Function to update the textarea with the current GPS location in DMS format
