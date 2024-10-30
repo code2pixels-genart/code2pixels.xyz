@@ -1,0 +1,23 @@
+@import 'colors.css';
+@import 'layout.css';
+@import 'qr-code.css';
+@import 'ui-components.css';
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+span {
+    background-color: var(--bg-color);        
+}
+

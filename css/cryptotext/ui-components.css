@@ -1,0 +1,174 @@
+
+
+.ui-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: var(--ui-bg);
+    border-left: 1px solid var(--ui-border);
+    transition: transform 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1;
+    padding-bottom: 20vh;
+
+}
+
+.ui-container.hidden {
+    transform: translateX(100%);
+}
+
+
+/* Scrollbar styles */
+.ui-container::-webkit-scrollbar {
+    width: 20px; /* Adjust scrollbar width */
+}
+
+.ui-container::-webkit-scrollbar-track {
+    background: var(--ui-bg); /* Background of the scrollbar track */
+    border-radius: 20px;
+}
+
+.ui-container::-webkit-scrollbar-thumb {
+    background-color: var(--ui-border); /* Color of the scrollbar thumb */
+    border: 2px solid var(--ui-bg); /* Adds spacing around the thumb */
+}
+
+/* Optional: Hover effect for the scrollbar thumb */
+.ui-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 255, 0, 0.8); /* Darker color on hover */
+}
+
+.toggle-ui {
+    position: fixed;
+    opacity: 0.2;
+    right: 310px;
+    top: 10px;
+    background: var(--ui-bg);
+    color: var(--text-color);
+    border: 1px solid var(--ui-border);
+    padding: 10px;
+    cursor: pointer;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.toggle-ui.hidden {
+    right: 10px;
+}
+
+.theme-toggle {
+    position: fixed;
+    opacity: 0.2;
+    left: 10px;
+    top: 10px;
+    background: var(--ui-bg);
+    border: 1px solid var(--ui-border);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.toggle-ui:hover, .theme-toggle:hover {
+    opacity: 0.8;
+}
+
+
+.fas {
+    color: var(--text-color);
+}
+
+.btn {
+  width: 100%;
+  font-family: 'Courier New', monospace;
+  line-height: 20px;
+    border: 1px solid var(--ui-border);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.slider {
+  width: 100%;
+  font-family: 'Courier New', monospace;
+  line-height: 20px;
+    border: 1px solid var(--ui-border);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.btn:active {
+    color: var(--bg-color);
+    background-color: var(--text-color);
+}
+
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: var(--text-color); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: var(--text-color); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+
+textarea, input {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--ui-border);
+    padding: 5px;
+    margin: 5px 0;
+}
+
+textarea {
+    border: none; 
+        outline: none; /* Remove the outline on focus */
+        background-color: transparent; /* Make the background transparent */
+        resize: none; /* Prevent resizing */
+        position: absolute;
+        bottom: 25%;
+        left: 0;
+        width: 25%;
+        height: 50%;
+        resize: none;
+        font-size: 50pt;
+        user-select: var(--ui-border); 
+        caret-color: var(--ui-border); /* Neon green caret */
+        animation: blink 1s step-end infinite;
+      }
+
+
+    /* Mobile-friendly styling */
+    @media (max-width: 768px) {
+        textarea {
+            background-color: var(--ui-bg);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Full width on mobile */
+            height: 20vh; /* Small height for mobile, adjust as needed */
+            font-size: 8vw; /* Responsive font size based on viewport width */
+            padding: 10px;
+            border: none; 
+        }
+    }
+
+    textarea::selection{
+        color: var(--bg-color);
+        background-color: var(--text-color);
+    }
+
+
+  @keyframes blink {
+      from, to { caret-color: transparent; }
+      50% { caret-color: var(--text-color); }
+  }

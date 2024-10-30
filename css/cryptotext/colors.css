@@ -1,0 +1,22 @@
+:root {
+	--bg-color: #000000;
+	--text-color: #ffffff; 
+	--ui-bg: #000000cc;
+	--ui-border: #ffffff;
+	--shadow-color: rgba(0, 255, 0, 0.2);
+	--glow-color: rgba(0, 255, 0, 0.8);
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --ui-bg: #f0f0f0;
+    --ui-border: #dddddd;
+}
+
+[data-theme="green"] {
+    --bg-color: #000000;
+    --text-color: #00ff00;
+    --ui-bg: #000000;
+    --ui-border: #00ff00;
+}

@@ -1,0 +1,39 @@
+/* QR Code Styles */
+.qr-code-container {
+    display: none;
+    position: absolute;
+    bottom: 25%;
+    right: 0;
+    width: 20%;
+    height: 50%;
+    resize: none;
+    z-index: 0;            
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+
+/* Mobile-friendly styling */
+@media (max-width: 768px) {
+    .qr-code-container {
+            position: absolute;
+            top: 0;
+            right: 35%;
+            width: 25%;
+            resize: none;
+            z-index: 0;
+            align-items: flex-start;
+            margin: 10px;
+        }
+
+
+    .qr-code-container > canvas {
+        height: fit-content;
+    }
+}
+
+
+.qr-code-container > canvas {
+    width: 90%;
+}
