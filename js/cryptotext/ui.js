@@ -1,3 +1,4 @@
+const ethAddress = "0x959Eb2b8B52bE60AC8D0f34f8e77e6d842f97379";
 const toggleUI = document.querySelector('.toggle-ui');
 const uiContainer = document.querySelector('.ui-container');
 const themeToggle = document.querySelector('.theme-toggle');
@@ -203,6 +204,7 @@ function createUI(container) {
     // Text input
     // createSpan('Text Input: ').parent(container);
     const textInput = createElement('textarea');
+    textInput.id('textarea');
     textInput.style('padding', '10px');
     textInput.style('grid-column', 'span 2');
     textInput.style('overflow', 'hidden'); // Prevent scrolling
@@ -246,7 +248,10 @@ function createUI(container) {
       saveCanvasImage();
     });
 
-    // Show QR Code Button
+    createElement('br').parent(container);
+    createElement('br').parent(container);
+
+    // Toggle QR Code Button
     const showQRButton = createButton('Toggle QR');
     showQRButton.parent(container);
     showQRButton.style("height","10%");
@@ -260,6 +265,19 @@ function createUI(container) {
 
     createElement('br').parent(container);
     createElement('br').parent(container);
+
+    // Run LLM Button
+    // const runLLMButton = createButton('RUN');
+    // runLLMButton.parent(container);
+    // runLLMButton.style("height","10%");
+    // runLLMButton.style("font-size","x-large");
+    // runLLMButton.class("btn");
+    // runLLMButton.mousePressed(() => {
+    //     runModel();
+    // });
+
+    // createElement('br').parent(container);
+    // createElement('br').parent(container);
 
     // Save preset button
     const savePresetButton = createButton('Save Preset');
@@ -275,6 +293,7 @@ function createUI(container) {
     });
 
     createElement('br').parent(container);
+    
     // Load preset button
     const loadPresetButton = createButton('Load Preset');
     loadPresetButton.parent(container);
@@ -283,9 +302,44 @@ function createUI(container) {
     loadPresetButton.class("btn");
     loadPresetButton.id("loadPresetBtn");
     loadPresetButton.mousePressed(() => {
-	    const presetName = prompt("Enter the name of the preset to load:");
-	    loadPreset(presetName);
+        const presetName = prompt("Enter the name of the preset to load:");
+        loadPreset(presetName);
     });
+    createElement('br').parent(container);
+    createElement('br').parent(container);
+
+    
+    // ETH button
+    const ethButton = createButton("");
+    ethButton.parent(container);
+    ethButton.style("height","10%");
+    ethButton.style("font-size","x-large");
+    ethButton.class("btn");
+    ethButton.id("ethCopyButton");
+    ethButton.mousePressed(() => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(ethAddress).then(() => {
+                showCustomAlert("ETH address copied to clipboard!");
+            }).catch(err => {
+                console.error("Failed to copy ETH address: ", err);
+                showCustomAlert("Failed to copy. Try again.");
+            });
+        } else {
+            const tempTextarea = document.createElement("textarea");
+            tempTextarea.value = ethAddress;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            try {
+                document.execCommand("copy");
+                showCustomAlert("ETH address copied to clipboard!");
+            } catch (err) {
+                console.error("Fallback copy method failed: ", err);
+                showCustomAlert("Failed to copy. Try again.");
+            }
+            document.body.removeChild(tempTextarea);
+        }
+    });
+    createElement("i").class("fab fa-ethereum").parent(ethButton)
     createElement('br').parent(container);
     createElement('br').parent(container);
 
@@ -324,4 +378,20 @@ function resizeTextareaFont() {
     }
 }
 
+function showCustomAlert(message, duration = 3000) {
+    const alertDiv = document.getElementById("customAlert");
 
+    if (!alertDiv) return; // Exit if the alert div doesn't exist
+
+    alertDiv.textContent = message;
+    alertDiv.classList.remove("hidden");
+    alertDiv.classList.add("show");
+
+    // Set a timeout to slide back and fade away
+    setTimeout(() => {
+        alertDiv.classList.remove("show");
+        setTimeout(() => {
+            alertDiv.classList.add("hidden");
+        }, 500); // Match the CSS transition duration for smooth hiding
+    }, duration);
+}

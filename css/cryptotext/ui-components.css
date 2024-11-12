@@ -173,3 +173,27 @@ textarea::selection{
     from, to { caret-color: transparent; }
     50% { caret-color: var(--text-color); }
 }
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: -300px; /* Start hidden off-screen */
+    background-color: #003300AA;
+    color: var(--text-color);
+    padding: 15px 30px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: right 0.5s ease, opacity 0.5s ease;
+    z-index: 1000;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.alert.show {
+    right: 50%; /* Slides in */
+    opacity: 1;
+}
+
+.alert.hidden {
+    display: none;
+}

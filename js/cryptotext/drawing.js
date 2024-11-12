@@ -153,8 +153,8 @@ function updateCanvasRatio(ratio) {
     let width, height;
     switch (ratio) {
         case '1:1':
-            width = 1080 / 2;
-            height = 1080 / 2;
+            width = 1920 / 2;
+            height = 1920 / 2;
             break;
         case '16:9':
             width = 1920 / 2;
